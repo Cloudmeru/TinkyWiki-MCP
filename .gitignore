@@ -1,0 +1,26 @@
+# Build artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+scripts/
+.github/agents/security.agent.md
+.github/agents/codequality.agent.md
+.github/agents/cq-linter.agent.md
+.github/agents/cq-refactor.agent.md
+.github/agents/cq-testing.agent.md

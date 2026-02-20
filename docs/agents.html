@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI Guide — TinkyWiki MCP Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<button class="burger" aria-label="Toggle navigation">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      TinkyWiki MCP
+    </div>
+    <span class="version">v1.3.0</span>
+  </div>
+  <nav>
+    <div class="nav-section">Overview</div>
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="release-notes.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+      Release Notes
+    </a>
+    <div class="nav-section">Getting Started</div>
+    <a href="installation.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Installation
+    </a>
+    <a href="setup.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Editor Setup
+    </a>
+    <div class="nav-section">Reference</div>
+    <a href="tools.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Tools
+    </a>
+    <a href="configuration.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Configuration
+    </a>
+    <a href="architecture.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      Architecture
+    </a>
+    <div class="nav-section">Guides</div>
+    <a href="agents.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5C7.33 7.83 4 10.6 4 13a8 8 0 0 0 16 0c0-2.4-3.33-5.17-5-6.5"/></svg>
+      Agentic AI Guide
+    </a>
+    <a href="skills.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Skills &amp; Client Setup
+    </a>
+    <a href="testing-guide.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Agent Testing Guide
+    </a>
+    <a href="demo.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Cloudmeru/TinkyWiki-MCP" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://pypi.org/project/tinkywiki-mcp/" target="_blank">PyPI</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="content">
+    <h1 class="page-title">Agentic AI Guide</h1>
+    <p class="page-subtitle">How to build AI agents that leverage TinkyWiki MCP — featuring proven VS Code custom agent definitions and lessons learned.</p>
+
+    <!-- Overview -->
+    <h2>Overview</h2>
+    <p>TinkyWiki MCP turns any LLM agent into a <strong>codebase-aware assistant</strong>. This guide covers two approaches:</p>
+    <ol>
+      <li><strong>VS Code Custom Agents</strong> — Production-tested <code>.agent.md</code> definitions that ship with this project, using a master orchestrator + specialist subagent pattern.</li>
+      <li><strong>Generic Agent Integration</strong> — System prompts and MCP client configs for any LLM framework (Claude Desktop, custom Python agents, etc.).</li>
+    </ol>
+
+    <!-- ─── VS Code Custom Agents ─── -->
+    <h2 id="vscode-agents">VS Code Custom Agents</h2>
+    <p>This project ships with <strong>6 production-tested agent definitions</strong> in <code>.github/agents/</code> that work with GitHub Copilot's custom agent system. The architecture uses a <strong>master orchestrator</strong> that routes requests to 5 specialist subagents.</p>
+
+    <h3>Architecture Diagram</h3>
+    <div class="tool-card" style="padding: 1.5rem;">
+      <pre class="mermaid">
+flowchart LR
+    User(["👤 @tinkywiki"]) --> Master["🎯 TinkyWiki Master\n(orchestrator + tool broker)"]
+
+    Master -->|"general questions"| Researcher["🔍 Researcher\n(general exploration)"]
+    Master -->|"code-level questions"| Reviewer["📝 Code Review\n(module/function analysis)"]
+    Master -->|"design questions"| Architect["🏗️ Architecture Explorer\n(system design)"]
+    Master -->|"multi-repo questions"| Comparison["⚖️ Comparison\n(side-by-side analysis)"]
+    Master -->|"build from multiple repos"| Synthesizer["🧬 Synthesizer\n(combine & integrate)"]
+
+    MCP["🔌 tinkywiki-mcp/*\n(5 MCP tools)"] -.->|"exposed via master"| Master
+    Skill["📚 SKILL.md\n(domain knowledge)"] -.->|"read on-demand"| Researcher
+    Skill -.->|"read on-demand"| Reviewer
+    Skill -.->|"read on-demand"| Architect
+    Skill -.->|"read on-demand"| Comparison
+    Skill -.->|"read on-demand"| Synthesizer
+
+    style Master fill:#6c63ff,stroke:#5a52d5,color:#fff
+    style Researcher fill:#1e293b,stroke:#6c63ff,color:#e2e8f0
+    style Reviewer fill:#1e293b,stroke:#6c63ff,color:#e2e8f0
+    style Architect fill:#1e293b,stroke:#6c63ff,color:#e2e8f0
+    style Comparison fill:#1e293b,stroke:#6c63ff,color:#e2e8f0
+    style Synthesizer fill:#1e293b,stroke:#6c63ff,color:#e2e8f0
+    style MCP fill:#1e293b,stroke:#f59e0b,color:#e2e8f0
+    style Skill fill:#1e293b,stroke:#10b981,color:#e2e8f0
+    style User fill:#0f172a,stroke:#6c63ff,color:#e2e8f0
+      </pre>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8;">
+        <strong>Master tools:</strong> <code>read</code>, <code>agent</code>, <code>tinkywiki-mcp/*</code> (orchestrator + tool broker)<br>
+        <strong>Subagent tools:</strong> <code>read</code> + <code>tinkywiki-mcp/*</code> (all 5 tools, including NOT_INDEXED handling)<br>
+        <strong>Synthesizer model:</strong> <code>GPT-5.3-Codex</code> (needs strong reasoning for multi-repo integration design)<br>
+        <strong>Skills:</strong> <code>.github/skills/tinkywiki-usage/SKILL.md</code> (loaded on-demand via <code>read</code>)
+      </p>
+    </div>
+
+    <div class="tool-card" style="margin-top: 1rem; border-left: 3px solid #f59e0b; padding: 1rem 1.5rem;">
+      <p style="margin: 0; color: #fbbf24;"><strong>⚠️ Model Warning:</strong></p>
+      <p style="margin: 0.5rem 0 0 0;">Do <strong>not</strong> use free or low-tier models (e.g., GPT-5 mini) for the master agent. These models produce <strong>inconsistent routing and truncated results</strong> — they frequently summarize subagent output instead of presenting it in full, misroute requests, or skip delegation entirely. Use a <strong>1× credit model</strong> like <code>GPT-5.3-Codex</code> for reliable orchestration. Subagents can still use cheaper models since their task is more focused.</p>
+    </div>
+
+    <h3>Key Design Decisions</h3>
+    <table>
+      <thead><tr><th>Decision</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Master is an orchestrator + tool broker</strong></td>
+          <td>The master declares <code>tinkywiki-mcp/*</code> in its tools list so that MCP tools are <strong>exposed to subagents</strong> when spawned. The master itself still acts as a router — it delegates via the <code>agent</code> tool and does not call TinkyWiki tools directly. Without <code>tinkywiki-mcp/*</code> on the master, subagents would have no access to the MCP server.</td>
+        </tr>
+        <tr>
+          <td><strong>Master uses a capable model (1× credit)</strong></td>
+          <td>Free/low-tier models (GPT-5 mini, GPT-4.1 nano) produce inconsistent routing — truncated results, skipped delegation, brief summaries instead of full output. A 1× credit model like <code>GPT-5.3-Codex</code> ensures reliable orchestration.</td>
+        </tr>
+        <tr>
+          <td><strong>Subagents handle everything</strong></td>
+          <td>Each subagent has all 5 <code>tinkywiki_*</code> tools and handles NOT_INDEXED errors independently. They call <code>tinkywiki_request_indexing</code> themselves and report back. No pre-checking needed by the master.</td>
+        </tr>
+        <tr>
+          <td><strong><code>user-invokable: false</code> on subagents</strong></td>
+          <td>Prevents users from bypassing the orchestrator. Only the master is directly invokable via <code>@tinkywiki</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Server name consistency</strong></td>
+          <td>The server name in <code>.vscode/mcp.json</code> (<code>tinkywiki-mcp</code>) must exactly match the tool prefix in agent files (<code>tinkywiki-mcp/tinkywiki_*</code>).</td>
+        </tr>
+        <tr>
+          <td><strong>Synthesizer uses a capable model</strong></td>
+          <td>The Synthesizer is the most cognitively demanding subagent — it holds context from 3+ repos simultaneously while doing creative integration design. It uses <code>GPT-5.3-Codex</code> (1× credit) instead of <code>GPT-5 mini</code> to ensure quality architecture blueprints.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Master Agent -->
+    <h3 id="master-agent">1. Master Orchestrator — <code>tinkywiki.agent.md</code></h3>
+    <p>The entry point. Users invoke <code>@tinkywiki</code> in VS Code Chat, and this agent routes to the right specialist. It declares <code>tinkywiki-mcp/*</code> in its tools list to expose MCP tools to subagents.</p>
+    <div class="tool-card">
+      <h3>YAML Frontmatter</h3>
+      <pre><code>---
+name: TinkyWiki
+description: Master agent that routes your request to the right TinkyWiki specialist
+argument-hint: Any question about open-source repos, e.g., "Explain React's architecture"
+model: GPT-5.3-Codex
+tools:
+  [read, agent, tinkywiki-mcp/*]
+agents:
+  [TinkyWiki Researcher, TinkyWiki Code Review, TinkyWiki Architecture Explorer, TinkyWiki Comparison, TinkyWiki Synthesizer]
+---</code></pre>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #94a3b8;">
+        <strong>Why <code>tinkywiki-mcp/*</code> on the master?</strong> The master must declare MCP tools so they are available when spawning subagents. Without this, subagents cannot access the TinkyWiki MCP server.<br>
+        <strong>Why <code>GPT-5.3-Codex</code>?</strong> Free/low-tier models produce inconsistent routing and result truncation. A 1× credit model ensures reliable delegation and full result presentation.
+      </p>
+    </div>
+
+    <div class="tool-card">
+      <h3>Routing Rules</h3>
+      <table>
+        <thead><tr><th>User Intent</th><th>Subagent</th><th>Signal Words</th></tr></thead>
+        <tbody>
+          <tr><td>General exploration</td><td>TinkyWiki Researcher</td><td>"what is", "explain", "tell me about", "overview"</td></tr>
+          <tr><td>Code analysis</td><td>TinkyWiki Code Review</td><td>"review", "analyse", "module", "function", "code"</td></tr>
+          <tr><td>System design</td><td>TinkyWiki Architecture Explorer</td><td>"architecture", "design", "structure", "hierarchy"</td></tr>
+          <tr><td>Multi-repo comparison</td><td>TinkyWiki Comparison</td><td>"compare", "vs", "difference", "or"</td></tr>
+          <tr><td>Multi-repo synthesis</td><td>TinkyWiki Synthesizer</td><td>"combine", "merge", "build using", "take X from A and Y from B"</td></tr>
+          <tr><td>Unindexed repo</td><td><em>Subagent handles it</em></td><td>Subagent calls <code>tinkywiki_request_indexing</code> and reports back</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tool-card">
+      <h3>Master Workflow</h3>
+      <pre><code>1. CLASSIFY the user's intent from their message
+2. DELEGATE immediately to the chosen subagent via the `agent` tool:
+   - Include the repo URL (owner/repo format) or a bare keyword
+     like "vue" — tools auto-resolve keywords to owner/repo
+   - Include the specific question to answer
+   - Subagents are stateless and have their own tools — they will
+     fetch data and handle errors (including NOT_INDEXED) independently
+3. PRESENT THE FULL RESULT: Show the complete subagent response —
+   tables, citations, code snippets, everything. Do NOT replace it
+   with a brief summary like "Done" or "Comparison delivered".
+   Optionally add follow-up suggestions AFTER the full content.
+4. MULTI-STEP: For complex requests spanning specialties,
+   run subagents sequentially
+
+Example delegation prompt:
+  "Research facebook/prophet — explain its main features.
+   Repo: facebook/prophet"</code></pre>
+    </div>
+
+    <!-- Specialist Subagents -->
+    <h3 id="subagents">2. Specialist Subagents</h3>
+    <p>All 5 specialists share the same tool access (<code>read</code> + <code>tinkywiki-mcp/*</code>) but differ in their persona, workflow, and output format. All have <code>user-invokable: false</code>. The Synthesizer uses <code>GPT-5.3-Codex</code> for stronger reasoning; the other 4 use <code>GPT-5 mini</code>.</p>
+
+    <div class="tool-card">
+      <h3>2a. TinkyWiki Researcher</h3>
+      <p><strong>File:</strong> <code>tinkywiki-researcher.agent.md</code> — General-purpose exploration and documentation lookup.</p>
+      <pre><code>---
+name: TinkyWiki Researcher
+description: Explores open-source codebases using Google TinkyWiki
+model: GPT-5 mini
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+---
+
+Workflow:
+1. tinkywiki_read_structure → cheapest discovery
+2. tinkywiki_list_topics → titles + 200-char previews
+3. tinkywiki_read_contents(section_title=...) → targeted reads
+4. tinkywiki_search_wiki → specific implementation questions
+5. Synthesize with citations to TinkyWiki sections</code></pre>
+    </div>
+
+    <div class="tool-card">
+      <h3>2b. TinkyWiki Code Review</h3>
+      <p><strong>File:</strong> <code>tinkywiki-reviewer.agent.md</code> — Helps developers understand unfamiliar code during reviews.</p>
+      <pre><code>---
+name: TinkyWiki Code Review
+description: Helps developers understand unfamiliar codebases during code review
+model: GPT-5 mini
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+---
+
+Focus: Code structure, patterns, implementation details.
+Tone: Concise, technical, review-note style.
+Output: References specific modules, classes, or functions.</code></pre>
+    </div>
+
+    <div class="tool-card">
+      <h3>2c. TinkyWiki Architecture Explorer</h3>
+      <p><strong>File:</strong> <code>tinkywiki-architect.agent.md</code> — Maps and explains project architectures.</p>
+      <pre><code>---
+name: TinkyWiki Architecture Explorer
+description: Maps and explains project architectures
+model: GPT-5 mini
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+---
+
+Output Format:
+- Overview: One paragraph summary
+- Key Components: Bullet list with descriptions
+- Data Flow: How data moves through the system
+- Patterns: Design patterns and architectural decisions
+- Extension Points: How to extend or customize</code></pre>
+    </div>
+
+    <div class="tool-card">
+      <h3>2d. TinkyWiki Comparison</h3>
+      <p><strong>File:</strong> <code>tinkywiki-comparison.agent.md</code> — Side-by-side multi-repo comparison.</p>
+      <pre><code>---
+name: TinkyWiki Comparison
+description: Compares multiple open-source repositories side-by-side
+model: GPT-5 mini
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+---
+
+Output Format: Structured comparison table
+| Aspect       | Repo A         | Repo B         |
+|--------------|----------------|----------------|
+| Architecture | ...            | ...            |
+| Key Pattern  | ...            | ...            |
+
+Handles NOT_INDEXED gracefully — continues with available repos,
+notes which comparisons are incomplete.</code></pre>
+    </div>
+
+    <div class="tool-card">
+      <h3>2e. TinkyWiki Synthesizer</h3>
+      <p><strong>File:</strong> <code>tinkywiki-synthesizer.agent.md</code> — Combines features, patterns, and architectures from multiple repos into a new solution blueprint.</p>
+      <pre><code>---
+name: TinkyWiki Synthesizer
+description: Combines features, patterns, and architectures from multiple repos into a new solution blueprint
+model: GPT-5.3-Codex
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+---
+
+6-Phase Workflow:
+1. DECOMPOSE — Parse repos + desired parts (specific or vague)
+2. DISCOVER  — For vague requests: explore repos, find standout
+               features, select complementary parts automatically
+3. RESEARCH  — tinkywiki tools to gather relevant sections per repo
+4. EXTRACT   — Document interfaces, dependencies, patterns per part
+5. RESOLVE   — Identify and fix cross-repo incompatibilities
+6. DESIGN    — Integration architecture (how parts connect)
+7. BLUEPRINT — Directory structure, code snippets, implementation guide
+
+Handles two request types:
+- Specific: "Take auth from A, events from B" → skip DISCOVER
+- Vague: "Combine best parts from A and B" → DISCOVER first
+
+Output: Parts table, compatibility analysis, Mermaid architecture
+diagram, directory structure, integration code, step-by-step guide.
+
+Model: GPT-5.3-Codex — this is the most cognitively demanding
+subagent (multi-repo context + creative architecture design).</code></pre>
+    </div>
+
+    <!-- Skills -->
+    <h2 id="skills">Skills</h2>
+    <p>Skills are <code>SKILL.md</code> files that provide <strong>domain-specific knowledge</strong> to agents. They are loaded on-demand via the <code>read</code> tool, so agents only consume tokens when they actually need the knowledge.</p>
+
+    <h3>Folder Structure</h3>
+    <pre><code>.github/
+  skills/
+    tinkywiki-usage/
+      SKILL.md          ← domain knowledge for TinkyWiki MCP usage</code></pre>
+
+    <h3>Skill File Format</h3>
+    <p>A <code>SKILL.md</code> file uses YAML frontmatter with <code>name</code> and <code>description</code> fields, followed by the skill content in Markdown:</p>
+    <div class="tool-card">
+      <pre><code>---
+name: tinkywiki-usage
+description: Best practices for using Google TinkyWiki MCP tools
+  to explore open-source repositories. Covers tool selection
+  strategy, token efficiency, pagination, error handling, and
+  multi-repo workflows.
+---
+
+# TinkyWiki MCP — Usage Best Practices
+
+## Tool Selection Strategy (ordered by cost)
+...
+
+## Recommended Workflow
+...
+
+## Anti-Patterns to Avoid
+...</code></pre>
+    </div>
+
+    <h3>How Skills Work</h3>
+    <ul>
+      <li><strong>On-demand loading:</strong> Agents use the <code>read</code> tool to load the skill file only when they need domain knowledge. This avoids bloating every prompt with instructions.</li>
+      <li><strong>Requires <code>read</code> tool:</strong> Every agent that uses skills must have <code>'read'</code> in its tools list. This is why all agents (master and subagents) include <code>read</code> as a tool entry.</li>
+      <li><strong>Workspace-wide:</strong> Skills are separate from agent definitions and available to all agents in the workspace.</li>
+      <li><strong>VS Code setting:</strong> Enable skill loading with <code>"chat.useAgentSkills": true</code> in your VS Code settings. When enabled, the editor exposes skill metadata to agents so they know which skills are available.</li>
+    </ul>
+
+    <!-- Lessons Learned -->
+    <h2 id="lessons-learned">Lessons Learned</h2>
+    <p>Key insights from building, testing, and debugging the VS Code custom agent system.</p>
+
+    <h3>1. Server Name Must Match Tool Prefix</h3>
+    <div class="tool-card">
+      <p>The server name in <code>.vscode/mcp.json</code> is used as the tool prefix in agent files. If your config says <code>"tinkywiki-mcp"</code>, your agent tools must reference <code>tinkywiki-mcp/tinkywiki_list_topics</code> — not <code>tinkywikiMcp/tinkywiki_list_topics</code>.</p>
+      <pre><code>// .vscode/mcp.json — this name ↓ ...
+{
+  "servers": {
+    "tinkywiki-mcp": {
+      "type": "stdio",
+      "command": "tinkywiki-mcp"
+    }
+  }
+}
+
+// ... must match this prefix ↓ in .agent.md files
+tools:
+  - 'tinkywiki-mcp/tinkywiki_list_topics'</code></pre>
+    </div>
+
+    <h3>2. Master Must Expose MCP Tools for Subagents</h3>
+    <div class="tool-card">
+      <p>The master agent must declare <code>tinkywiki-mcp/*</code> in its tools list — not because the master calls those tools directly, but because <strong>subagents need the master to expose MCP tools</strong> so they can access them when spawned. Without <code>tinkywiki-mcp/*</code> on the master, subagents would have no connection to the TinkyWiki MCP server. The master still acts as a router in its system prompt — it delegates via the <code>agent</code> tool and never calls TinkyWiki tools directly.</p>
+      <pre><code># Master tools — all three are required:
+tools:
+  [read, agent, tinkywiki-mcp/*]
+#  ↑ read skills  ↑ spawn subagents  ↑ expose MCP to subagents</code></pre>
+    </div>
+
+    <h3>3. Subagents Are Stateless — Let Them Do All the Work</h3>
+    <div class="tool-card">
+      <p>Subagents receive only the delegation prompt — no chat history, no pre-fetched data. They call their own tools independently. This means the master doesn't need to check repo availability before routing. The subagent handles everything: discovery, reading, NOT_INDEXED detection, and indexing requests.</p>
+    </div>
+
+    <h3>4. <code>user-invokable: false</code> Prevents Bypass</h3>
+    <div class="tool-card">
+      <p>Without this flag, users can type <code>@tinkywiki-researcher</code> directly, bypassing the orchestrator's routing and pre-fetch logic. Setting <code>user-invokable: false</code> on all subagents ensures the master is the only entry point.</p>
+    </div>
+
+    <h3>5. Custom Agents Only Work in VS Code Chat Panel</h3>
+    <div class="tool-card">
+      <p>VS Code custom agents (<code>.agent.md</code> files) are activated via <code>@agentname</code> in the <strong>Chat panel</strong> (Ctrl+Shift+I). They do NOT work in:</p>
+      <ul>
+        <li>Inline Chat (Ctrl+I)</li>
+        <li>Terminal inline suggestions</li>
+        <li>Regular Copilot conversation without the <code>@</code> prefix</li>
+      </ul>
+    </div>
+
+    <h3>6. Tool Declaration Format</h3>
+    <div class="tool-card">
+      <p>When listing tools in the YAML frontmatter, use shorthand names: <code>read</code> for reading files, <code>agent</code> for spawning subagents, and <code>tinkywiki-mcp/*</code> as a wildcard for all MCP tools. The <code>agents:</code> property lists which subagents the orchestrator can spawn.</p>
+      <pre><code># Master agent tools ✓
+tools:
+  [read, agent, tinkywiki-mcp/*]
+agents:
+  [TinkyWiki Researcher, TinkyWiki Code Review, ...]
+
+# Subagent tools ✓
+tools:
+  [read, tinkywiki-mcp/*]</code></pre>
+    </div>
+    <h3>7. Skills Provide Reusable Domain Knowledge</h3>
+    <div class="tool-card">
+      <p>Skills (<code>SKILL.md</code> files) are separate from agents and loaded on-demand via the <code>read</code> tool. They provide domain-specific best practices (tool selection strategy, anti-patterns, workflows) without bloating agent prompts. Since skills are workspace-wide, all agents — including future ones — can access them automatically.</p>
+    </div>
+    <h3>8. Always Present the Full Subagent Result</h3>
+    <div class="tool-card">
+      <p>A common pitfall: the master receives a detailed response from a subagent (comparison tables, cited sections, code examples) but only shows the user a brief summary like <em>"Done — comparison delivered. Want me to do X?"</em>. The subagent's output <strong>IS</strong> the answer — always present the complete content first, then optionally suggest follow-ups after. The master's synthesis step must never gate or truncate results behind a follow-up question.</p>
+    </div>
+    <h3>9. Don't Use Free/Low-Tier Models for the Master Agent</h3>
+    <div class="tool-card">
+      <p>Free and low-tier models (GPT-5 mini, GPT-4.1, GPT-4.1 nano) produce <strong>inconsistent results</strong> when used as the master orchestrator. Common failure modes include:</p>
+      <ul>
+        <li><strong>Truncated output:</strong> The master summarizes the subagent's detailed response into a single sentence instead of presenting it in full.</li>
+        <li><strong>Skipped delegation:</strong> The master tries to answer from its own knowledge instead of spawning a subagent.</li>
+        <li><strong>Misrouting:</strong> Requests get sent to the wrong specialist (e.g., a comparison routed to the Researcher).</li>
+        <li><strong>Lost context:</strong> Multi-step requests (architecture + comparison) only complete the first step.</li>
+      </ul>
+      <p><strong>Recommendation:</strong> Use a <strong>1× credit model</strong> like <code>GPT-5.3-Codex</code> for the master agent. Subagents can still use cheaper models (GPT-5 mini) since their tasks are more focused and less prone to these failure modes.</p>
+    </div>
+    <!-- ─── Generic Agent Integration ─── -->
+    <h2 id="generic-integration">Generic Agent Integration</h2>
+    <p>If you're building agents outside VS Code (Claude Desktop, custom Python, LangChain, etc.), use these system prompts and configurations.</p>
+
+    <h3>Skill Definition</h3>
+    <p>A <strong>skill</strong> tells your agent <em>when</em> and <em>how</em> to use TinkyWiki MCP tools. Use this as a reusable building block in any agent framework.</p>
+
+    <div class="tool-card">
+      <h3>TinkyWiki MCP Skill</h3>
+      <pre><code>Name: tinkywiki-research
+Description: Research and understand open-source codebases using
+  Google TinkyWiki. Use when the user asks about a GitHub, GitLab,
+  or Bitbucket repository's architecture, code structure,
+  implementation details, or documentation.
+
+Triggers:
+  - User asks "how does [repo] work?"
+  - User asks about a repository's architecture or design
+  - User needs to understand code in a specific repo
+  - User asks "explain [feature] in [repo]"
+
+Available Tools:
+  1. tinkywiki_read_structure    — Table of contents (JSON, cheapest)
+  2. tinkywiki_list_topics  — Titles + short previews (lightweight)
+  3. tinkywiki_read_contents     — Read paginated or section-specific docs
+  4. tinkywiki_search_wiki       — Ask Gemini a question about the repo
+  5. tinkywiki_request_indexing  — Submit unindexed repos for indexing
+
+Recommended Workflow (token-efficient):
+  1. Start with tinkywiki_read_structure (~500-1000 tokens)
+  2. Call tinkywiki_list_topics for titles + previews (~2000-3000 tokens)
+  3. Use tinkywiki_read_contents with section_title for targeted reads
+  4. Use tinkywiki_search_wiki only for specific questions</code></pre>
+    </div>
+
+    <h3>System Prompt Template</h3>
+    <p>A general-purpose system prompt you can adapt for any LLM agent framework:</p>
+
+    <div class="tool-card">
+      <h3>Codebase Research Agent</h3>
+      <pre><code>You are a codebase research agent with access to Google TinkyWiki
+via MCP tools. Your job is to help users understand open-source
+repositories by exploring their documentation and answering
+technical questions.
+
+## Tools Available (ordered by token efficiency)
+- tinkywiki_read_structure(repo_url) — JSON table of contents (cheapest)
+- tinkywiki_list_topics(repo_url) — Titles + short previews
+- tinkywiki_read_contents(repo_url, section_title?, offset?, limit?) — Read docs
+- tinkywiki_search_wiki(repo_url, query) — Ask Gemini about the repo
+- tinkywiki_request_indexing(repo_url) — Submit unindexed repos
+
+## Workflow
+1. tinkywiki_read_structure → discover sections (cheapest)
+2. tinkywiki_list_topics → titles + 200-char previews
+3. tinkywiki_read_contents(section_title=...) → targeted reads
+4. tinkywiki_search_wiki → specific implementation questions
+5. Synthesize into a clear, cited answer
+
+## Rules
+- Always cite which section your answer is based on
+- If NOT_INDEXED, call tinkywiki_request_indexing and inform the user
+- Use owner/repo shorthand (e.g., "microsoft/vscode") or bare keywords
+  (e.g., "vue", "react") — keywords are auto-resolved via TinkyWiki search
+- Never fabricate information — only report what tools return</code></pre>
+    </div>
+
+    <!-- MCP Client Config -->
+    <h2 id="mcp-config">MCP Client Configuration</h2>
+    <p>Connect your agent to TinkyWiki MCP by adding the server to your MCP client config:</p>
+
+    <h3>VS Code (<code>.vscode/mcp.json</code>)</h3>
+    <pre><code>{
+  "servers": {
+    "tinkywiki-mcp": {
+      "type": "stdio",
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+    <p><strong>Important:</strong> The server name (<code>tinkywiki-mcp</code>) must match the tool prefix used in your <code>.agent.md</code> files.</p>
+
+    <h3>Claude Desktop</h3>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+
+    <h3>Custom Agent (Python)</h3>
+    <pre><code># Example: connecting via subprocess
+import subprocess, json
+
+proc = subprocess.Popen(
+    ["tinkywiki-mcp"],
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    text=True
+)
+# Send MCP JSON-RPC requests to proc.stdin
+# Read MCP JSON-RPC responses from proc.stdout</code></pre>
+
+    <h3>Custom Agent (SSE)</h3>
+    <pre><code># Start server in SSE mode
+tinkywiki-mcp --sse --port 8080
+
+# Then connect your agent to http://localhost:8080/sse</code></pre>
+
+    <!-- Error Handling -->
+    <h2>Agent Error Handling</h2>
+    <p>Teach your agent to handle TinkyWiki MCP errors gracefully:</p>
+    <pre><code># In your agent's tool-call handler:
+
+result = call_mcp_tool("tinkywiki_search_wiki", {
+    "repo_url": repo,
+    "query": question
+})
+
+response = json.loads(result)
+
+if response["status"] == "error":
+    code = response.get("code", "UNKNOWN")
+
+    if code == "TIMEOUT":
+        # Retry once, or fall back to tinkywiki_read_contents
+        pass
+    elif code == "NO_CONTENT":
+        # Repo may not be indexed — inform the user
+        pass
+    elif code == "NOT_INDEXED":
+        # Repo is not yet in TinkyWiki — submit for indexing
+        call_mcp_tool("tinkywiki_request_indexing", {"repo_url": repo})
+        # Inform user: repo submitted, check back later
+        pass
+    elif code == "RATE_LIMIT":
+        # Wait and retry, or switch to cached tools
+        pass
+    elif code == "VALIDATION":
+        # Fix the input (bad repo_url format, etc.)
+        pass
+    else:
+        # Log and inform user of unexpected error
+        pass</code></pre>
+
+    <!-- Best Practices -->
+    <h2>Best Practices</h2>
+    <table>
+      <thead><tr><th>Practice</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Start with topics, then narrow</strong></td>
+          <td>Avoids wasting calls on repos where TinkyWiki has limited coverage</td>
+        </tr>
+        <tr>
+          <td><strong>Use structure before contents</strong></td>
+          <td>Lets the agent pick the right section instead of reading everything</td>
+        </tr>
+        <tr>
+          <td><strong>Prefer section reads over search for broad topics</strong></td>
+          <td>Section content is deterministic and cached; search uses Gemini chat which is slower</td>
+        </tr>
+        <tr>
+          <td><strong>Use search for specific implementation questions</strong></td>
+          <td>Gemini chat excels at pointed questions about code behavior</td>
+        </tr>
+        <tr>
+          <td><strong>Handle errors gracefully</strong></td>
+          <td>Check <code>status</code> field; repos may not be indexed or responses can time out</td>
+        </tr>
+        <tr>
+          <td><strong>Use <code>owner/repo</code> shorthand or keywords</strong></td>
+          <td>Bare keywords like "vue" auto-resolve to the correct repo; owner/repo and full URLs also work</td>
+        </tr>
+        <tr>
+          <td><strong>Cache-aware timing</strong></td>
+          <td>First call may take 5-15s (Playwright render); subsequent calls within 5 min are cached</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Keyword Resolution -->
+    <h2>Keyword Resolution &amp; Disambiguation</h2>
+    <p>All tools accept bare product keywords (e.g., <code>"vue"</code>, <code>"react"</code>,
+       <code>"openclaw"</code>) in addition to <code>owner/repo</code> shorthand and full URLs.
+       Keywords are resolved via TinkyWiki's search page with <strong>interactive disambiguation</strong>
+       using the MCP Elicitation protocol (VS Code 0.29+).</p>
+    <h3>How It Works</h3>
+    <ol>
+      <li>Input validation detects bare keywords (single words with no <code>/</code> or URL scheme)</li>
+      <li>TinkyWiki's search page is queried with the keyword</li>
+      <li>Resolution strategy:
+        <ul>
+          <li><strong>Single result</strong> → auto-select</li>
+          <li><strong>Canonical match</strong> (owner == repo == keyword) → auto-select,
+              e.g., "openclaw" → <code>openclaw/openclaw</code></li>
+          <li><strong>Multiple ambiguous results</strong> → <em>MCP Elicitation</em>:
+              VS Code presents a selection prompt listing the top candidates with star counts,
+              and the user picks the correct repo</li>
+          <li><strong>Fallback</strong> (elicitation unavailable) → heuristic selection by star count</li>
+        </ul>
+      </li>
+      <li>The response includes a resolution note showing what was resolved and top alternatives</li>
+    </ol>
+    <h3>Elicitation Prompt Example</h3>
+    <pre><code>Multiple repositories match "vue".
+
+1. vuejs/vue (209.9k★)
+2. vuejs/core (52.9k★)
+3. panjiachen/vue-element-admin (90.3k★)
+
+Which repository do you want to explore?
+→ User selects "vuejs/core"</code></pre>
+    <h3>Resolution Note (in response)</h3>
+    <pre><code>&gt; **Resolved:** keyword "vue" → **vuejs/core** (52,900★)
+&gt; Other candidates: vuejs/vue (209,900★), panjiachen/vue-element-admin (90,300★)</code></pre>
+
+    <!-- Token Efficiency -->
+    <h2>Token Efficiency Guide</h2>
+    <p>TinkyWiki MCP tools vary dramatically in token output. Understanding this helps you write efficient agents.</p>
+
+    <h3>Tool Token Cost Comparison</h3>
+    <table>
+      <thead><tr><th>Tool</th><th>Typical Tokens</th><th>Use For</th></tr></thead>
+      <tbody>
+        <tr><td><code>tinkywiki_read_structure</code></td><td>500–1,500</td><td>Table of contents / discovery</td></tr>
+        <tr><td><code>tinkywiki_list_topics</code></td><td>2,000–4,000</td><td>Titles + content previews</td></tr>
+        <tr><td><code>tinkywiki_read_contents</code> (section)</td><td>500–5,000</td><td>Targeted section content</td></tr>
+        <tr><td><code>tinkywiki_read_contents</code> (paginated)</td><td>3,000–8,000</td><td>Multiple sections at once</td></tr>
+        <tr><td><code>tinkywiki_search_wiki</code></td><td>1,000–6,000</td><td>Specific questions</td></tr>
+        <tr><td><code>tinkywiki_request_indexing</code></td><td>200–500</td><td>Submit unindexed repos</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Best Token-Efficiency Workflow</h3>
+    <ol>
+      <li>Start with <code>tinkywiki_read_structure</code> (cheapest, ~800 tokens)</li>
+      <li>Read only the sections you need with <code>tinkywiki_read_contents(section_title=...)</code></li>
+      <li>Use pagination (<code>offset</code>/<code>limit</code>) to avoid loading the entire wiki</li>
+      <li>Reserve <code>tinkywiki_search_wiki</code> for questions that sections can't answer</li>
+    </ol>
+
+    <h2>Model Selection &amp; Credit Optimization</h2>
+    <p>When using GitHub Copilot, your model choice significantly affects credit consumption <strong>and output quality</strong>.</p>
+
+    <h3>GitHub Copilot Model Multipliers</h3>
+    <table>
+      <thead><tr><th>Model</th><th>Multiplier</th><th>Credits per Request</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-4.1 / GPT-4.1 mini</td><td>0×</td><td>Free (on paid plans)</td><td>Subagents only — not for master</td></tr>
+        <tr><td>GPT-4.1 nano</td><td>0×</td><td>Free (on paid plans)</td><td>Subagents only — too weak for routing</td></tr>
+        <tr><td>GPT-5 mini</td><td>0×</td><td>Free (on paid plans)</td><td>Subagents only — inconsistent as master</td></tr>
+        <tr><td>Gemini 2.5 Flash</td><td>0.33×</td><td>~0.33</td><td>Good balance of capability/cost</td></tr>
+        <tr><td><strong>GPT-5.3-Codex</strong></td><td><strong>1×</strong></td><td><strong>1</strong></td><td><strong>Recommended for master agent</strong></td></tr>
+        <tr><td>Claude Sonnet 4</td><td>1×</td><td>1</td><td>Good alternative for master agent</td></tr>
+        <tr><td>Claude Opus 4.5 / 4.6</td><td>3×</td><td>3</td><td>Use sparingly for complex analysis</td></tr>
+        <tr><td>Claude Opus 4.1</td><td>10×</td><td>10</td><td>Reserve for critical tasks only</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tool-card" style="margin-top: 1rem; border-left: 3px solid #f59e0b; padding: 1rem 1.5rem;">
+      <p style="margin: 0; color: #fbbf24;"><strong>⚠️ Master Agent Model Requirement</strong></p>
+      <p style="margin: 0.5rem 0 0 0;">The master orchestrator should use a <strong>1× credit model minimum</strong> (e.g., <code>GPT-5.3-Codex</code> or <code>Claude Sonnet 4</code>). Free/low-tier models produce inconsistent routing, truncated subagent output, and skipped delegation. Subagents can still use free models — their focused tasks are less prone to these failure modes.</p>
+    </div>
+
+    <h3>Credit Budget Tips</h3>
+    <table>
+      <thead><tr><th>Tip</th><th>Savings</th></tr></thead>
+      <tbody>
+        <tr><td>Use GPT-5.3-Codex for master + Synthesizer, GPT-5 mini for other subagents</td><td>1 credit for routing, 1 for synthesis, 0 for other data gathering</td></tr>
+        <tr><td>Use <code>tinkywiki_read_structure</code> first to avoid unnecessary calls</td><td>~5,000-10,000 tokens saved per skipped tool call</td></tr>
+        <tr><td>Use <code>section_title</code> parameter instead of reading full pages</td><td>70-90% fewer tokens per call</td></tr>
+        <tr><td>Use pagination with small <code>limit</code> values</td><td>Read only what you need, not everything</td></tr>
+        <tr><td>Leverage caching — repeated calls within 5 min are free</td><td>Eliminates redundant Playwright renders</td></tr>
+        <tr><td>Don't use Opus-tier models for routine lookups</td><td>Save 3-10× credits per request</td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 2rem;">See also: <a href="testing-guide.html"><strong>Agent Testing Guide</strong></a> — sample prompts and validation checklists for testing the VS Code custom agents.</p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#6c63ff',
+      primaryTextColor: '#e2e8f0',
+      primaryBorderColor: '#5a52d5',
+      lineColor: '#6c63ff',
+      secondaryColor: '#1e293b',
+      tertiaryColor: '#0f172a',
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '14px'
+    }
+  });
+</script>
+</body>
+</html>

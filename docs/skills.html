@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills &amp; Client Setup — TinkyWiki MCP Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<button class="burger" aria-label="Toggle navigation">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      TinkyWiki MCP
+    </div>
+    <span class="version">v1.3.0</span>
+  </div>
+  <nav>
+    <div class="nav-section">Overview</div>
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="release-notes.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+      Release Notes
+    </a>
+    <div class="nav-section">Getting Started</div>
+    <a href="installation.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Installation
+    </a>
+    <a href="setup.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Editor Setup
+    </a>
+    <div class="nav-section">Reference</div>
+    <a href="tools.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Tools
+    </a>
+    <a href="configuration.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Configuration
+    </a>
+    <a href="architecture.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      Architecture
+    </a>
+    <div class="nav-section">Guides</div>
+    <a href="agents.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5C7.33 7.83 4 10.6 4 13a8 8 0 0 0 16 0c0-2.4-3.33-5.17-5-6.5"/></svg>
+      Agentic AI Guide
+    </a>
+    <a href="skills.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Skills &amp; Client Setup
+    </a>
+    <a href="testing-guide.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Agent Testing Guide
+    </a>
+    <a href="demo.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Cloudmeru/TinkyWiki-MCP" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://pypi.org/project/tinkywiki-mcp/" target="_blank">PyPI</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="content">
+    <h1 class="page-title">Skills &amp; Client Setup Guide</h1>
+    <p class="page-subtitle">How to add TinkyWiki MCP as a skill, custom instruction, or tool in VS Code, Copilot CLI, Claude Desktop, Cursor, Windsurf, and other AI clients.</p>
+
+    <!-- Overview -->
+    <h2>Overview</h2>
+    <p>Modern AI coding assistants support multiple ways to integrate external capabilities. This guide covers how to wire TinkyWiki MCP into every major client — from <strong>VS Code Agent Skills</strong> (the new open standard) to MCP server configurations in Claude Desktop, Cursor, and Windsurf.</p>
+
+    <table>
+      <thead><tr><th>Client</th><th>Method</th><th>Config Location</th></tr></thead>
+      <tbody>
+        <tr><td><strong>VS Code</strong></td><td>Agent Skills + MCP Server</td><td><code>.github/skills/</code> + <code>.vscode/mcp.json</code></td></tr>
+        <tr><td><strong>VS Code</strong></td><td>Custom Instructions</td><td><code>.github/copilot-instructions.md</code></td></tr>
+        <tr><td><strong>VS Code</strong></td><td>Prompt Files</td><td><code>.github/prompts/</code></td></tr>
+        <tr><td><strong>VS Code</strong></td><td>Custom Agents</td><td><code>.github/agents/</code></td></tr>
+        <tr><td><strong>Copilot CLI</strong></td><td>Skills + MCP + Instructions</td><td><code>~/.copilot/</code></td></tr>
+        <tr><td><strong>Claude Desktop</strong></td><td>MCP Server</td><td><code>claude_desktop_config.json</code></td></tr>
+        <tr><td><strong>Cursor</strong></td><td>MCP Server</td><td><code>.cursor/mcp.json</code></td></tr>
+        <tr><td><strong>Windsurf</strong></td><td>MCP Server</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td></tr>
+        <tr><td><strong>Claude Code</strong></td><td>Agent Skills</td><td><code>.claude/skills/</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- VS CODE: AGENT SKILLS -->
+    <!-- ============================================================ -->
+    <h2>VS Code: Agent Skills (Recommended)</h2>
+    <p><a href="https://agentskills.io/" target="_blank">Agent Skills</a> is an <strong>open standard</strong> that works across VS Code, GitHub Copilot CLI, Claude Code, Cursor, and many other tools. Skills are folders with a <code>SKILL.md</code> file that Copilot loads on-demand when relevant to your task.</p>
+
+    <div class="tool-card" style="border-left: 3px solid #10b981;">
+      <p><strong>Already included:</strong> This repository ships with the <code>tinkywiki-usage</code> skill at <code>.github/skills/tinkywiki-usage/SKILL.md</code> and 5 custom agents in <code>.github/agents/</code>. The examples below show how to create your own or adapt them for other projects.</p>
+    </div>
+
+    <h3>Step 1 — Create the skill folder</h3>
+    <pre><code># In your project root:
+mkdir -p .github/skills/tinkywiki-usage</code></pre>
+    <p>Supported locations for skills:</p>
+    <table>
+      <thead><tr><th>Type</th><th>Paths</th></tr></thead>
+      <tbody>
+        <tr><td>Project skills</td><td><code>.github/skills/</code>, <code>.claude/skills/</code>, <code>.agents/skills/</code></td></tr>
+        <tr><td>Personal skills</td><td><code>~/.copilot/skills/</code>, <code>~/.claude/skills/</code>, <code>~/.agents/skills/</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 2 — Create SKILL.md</h3>
+    <p>Create <code>.github/skills/tinkywiki-usage/SKILL.md</code>:</p>
+    <pre><code>---
+name: tinkywiki-usage
+description: >
+  Best practices for using Google TinkyWiki MCP tools to explore
+  open-source repositories. Covers tool selection strategy, token
+  efficiency, pagination, error handling, and multi-repo workflows.
+---
+
+# TinkyWiki MCP — Usage Best Practices
+
+## Tool Selection Strategy (ordered by cost)
+
+| Tool | Tokens | Use When |
+|------|--------|----------|
+| tinkywiki_read_structure | ~Low  | First call — get the table of contents as JSON |
+| tinkywiki_list_topics    | ~Med  | Need section titles + short previews |
+| tinkywiki_read_contents  | ~High | Read full section content (supports pagination) |
+| tinkywiki_search_wiki    | ~High | Ask Gemini a specific question about the repo |
+| tinkywiki_request_indexing | ~Min | Submit an unindexed repo for Google to process |
+
+## Recommended Workflow
+
+1. Start cheap: tinkywiki_read_structure(repo_url) to see what sections exist
+2. Pick sections: identify 1–3 relevant section titles
+3. Read targeted: tinkywiki_read_contents(repo_url, section_title=&lt;title&gt;)
+4. Search if needed: tinkywiki_search_wiki for specific questions
+5. Paginate large sections: use offset and limit parameters
+
+## Anti-Patterns to Avoid
+
+- Don't call tinkywiki_list_topics AND tinkywiki_read_contents without
+  a section_title — they overlap significantly
+- Don't call tinkywiki_search_wiki first — it's the most expensive tool
+- Don't read all sections — pick only what's relevant
+- Don't guess section titles — get real titles from tinkywiki_read_structure
+
+## Handling NOT_INDEXED Errors
+
+1. Tell the user the repo is not yet indexed
+2. Call tinkywiki_request_indexing(repo_url) to submit
+3. Explain indexing depends on demand — suggest trying later
+4. Never fabricate documentation for an unindexed repo
+
+## Citation Rules
+
+- Always cite which TinkyWiki section your information comes from
+- Use format: [Section Title] from owner/repo
+- If from tinkywiki_search_wiki, note it was an AI-generated answer</code></pre>
+
+    <h3>Step 3 — Add supplementary resources (optional)</h3>
+    <p>You can add example files alongside SKILL.md for richer context:</p>
+    <pre><code>.github/skills/tinkywiki-usage/
+  SKILL.md                  # Required — skill definition
+  examples/
+    research-workflow.md    # Example research session
+    compare-repos.md        # How to compare two repos
+  README.md                 # Additional notes for the skill</code></pre>
+
+    <h3>Step 4 — Wire up the MCP server</h3>
+    <p>The skill needs the TinkyWiki MCP server running. Add to <code>.vscode/mcp.json</code>:</p>
+    <pre><code>{
+  "servers": {
+    "tinkywiki-mcp": {
+      "type": "stdio",
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+
+    <h3>Step 5 — Use the skill</h3>
+    <p>The skill activates automatically when Copilot detects a relevant task. You can also invoke it manually:</p>
+    <pre><code># Type / in the chat and select "tinkywiki-usage"
+/tinkywiki-usage How does React handle fiber reconciliation?</code></pre>
+
+    <h3>Important: agents need the <code>read</code> tool</h3>
+    <p>For skills to work, agents must have the <code>read</code> tool in their tools list. VS Code injects skill metadata into the agent's context, and the agent uses <code>read</code> to load the full SKILL.md content on demand. All TinkyWiki subagents in this repo already include <code>'read'</code>:</p>
+    <pre><code># In .agent.md frontmatter:
+tools:
+  - 'read'                              # Required for skill loading
+  - 'tinkywiki-mcp/tinkywiki_list_topics'
+  - 'tinkywiki-mcp/tinkywiki_read_structure'
+  # ... etc.</code></pre>
+
+    <h3>How Agent Skills loading works</h3>
+    <table>
+      <thead><tr><th>Level</th><th>What loads</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Discovery</strong></td><td><code>name</code> + <code>description</code> from frontmatter</td><td>Always (lightweight)</td></tr>
+        <tr><td><strong>2. Instructions</strong></td><td>Full SKILL.md body</td><td>When task matches description</td></tr>
+        <tr><td><strong>3. Resources</strong></td><td>Additional files in skill folder</td><td>Only when referenced</td></tr>
+      </tbody>
+    </table>
+    <p>This progressive disclosure keeps context efficient — you can install many skills without consuming tokens.</p>
+
+    <!-- ============================================================ -->
+    <!-- VS CODE: CUSTOM INSTRUCTIONS -->
+    <!-- ============================================================ -->
+    <h2>VS Code: Custom Instructions</h2>
+    <p>Custom instructions are <strong>always-on</strong> guidelines automatically included in every chat request. Use them for project-wide rules about how to use TinkyWiki MCP.</p>
+
+    <h3>Option A — copilot-instructions.md (always-on)</h3>
+    <p>Create <code>.github/copilot-instructions.md</code>:</p>
+    <pre><code># Project Instructions
+
+## TinkyWiki MCP Usage
+When the user asks about an open-source repository's architecture,
+implementation, or documentation, use the TinkyWiki MCP tools:
+
+- Start with `tinkywiki_list_topics` to check coverage
+- Use `tinkywiki_read_structure` to find relevant sections
+- Use `tinkywiki_read_contents` for broad topics
+- Use `tinkywiki_search_wiki` for specific implementation questions
+- Use `tinkywiki_request_indexing` when a repo is not yet indexed
+- Always cite which section or tool response your answer is based on
+- Use `owner/repo` shorthand for repository URLs</code></pre>
+
+    <h3>Option B — .instructions.md (file-based, conditional)</h3>
+    <p>Create <code>.github/instructions/tinkywiki.instructions.md</code>:</p>
+    <pre><code>---
+name: 'TinkyWiki Research Rules'
+description: 'Guidelines for using TinkyWiki MCP tools when researching repos'
+applyTo: '**'
+---
+When researching open-source repositories, always use TinkyWiki MCP tools
+in this order: topics → structure → contents → search.
+
+Cite your sources by mentioning the section title you read from.
+Never fabricate information — only report what the tools return.</code></pre>
+
+    <h3>Option C — AGENTS.md (multi-agent compatible)</h3>
+    <p>For projects using multiple AI agents (VS Code, Claude Code, etc.), create an <code>AGENTS.md</code> in your workspace root with the same instructions. VS Code, Claude Code, and other tools recognize this file.</p>
+
+    <!-- ============================================================ -->
+    <!-- VS CODE: PROMPT FILES -->
+    <!-- ============================================================ -->
+    <h2>VS Code: Prompt Files</h2>
+    <p>Prompt files are reusable slash commands (<code>.prompt.md</code>) you invoke manually in chat. Unlike skills that activate automatically, prompts run on demand.</p>
+
+    <h3>Create a research prompt</h3>
+    <p>Create <code>.github/prompts/research-repo.prompt.md</code>:</p>
+    <pre><code>---
+description: 'Research an open-source repository using TinkyWiki MCP'
+agent: agent
+tools:
+  - tinkywiki-mcp/*
+---
+Research the repository: ${input:repo:owner/repo}
+
+Follow this workflow:
+1. Call tinkywiki_list_topics to see what documentation exists
+2. Call tinkywiki_read_structure to get the table of contents
+3. Read the most relevant sections using tinkywiki_read_contents
+4. Answer the user's question with citations
+
+User's question: ${input:question:What do you want to know?}</code></pre>
+
+    <h3>Use it in chat</h3>
+    <pre><code># Type / and select "research-repo"
+/research-repo</code></pre>
+    <p>VS Code prompts you for the <code>repo</code> and <code>question</code> inputs, then runs the full workflow.</p>
+
+    <!-- ============================================================ -->
+    <!-- VS CODE: CUSTOM AGENTS -->
+    <!-- ============================================================ -->
+    <h2>VS Code: Custom Agents</h2>
+    <p>Custom agents are persistent AI personas with specific tools and instructions. This repo ships with a <strong>proven 5-agent architecture</strong> — 1 master orchestrator + 4 specialist subagents. See the <a href="agents.html">Agentic AI Guide</a> for the full architecture.</p>
+
+    <div class="tool-card" style="border-left: 3px solid #10b981;">
+      <p><strong>Included agents</strong> (in <code>.github/agents/</code>):</p>
+      <table>
+        <thead><tr><th>File</th><th>Agent</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><code>tinkywiki.agent.md</code></td><td><strong>TinkyWiki</strong> (master)</td><td>Routes requests to the right specialist</td></tr>
+          <tr><td><code>tinkywiki-researcher.agent.md</code></td><td>TinkyWiki Researcher</td><td>General codebase exploration</td></tr>
+          <tr><td><code>tinkywiki-reviewer.agent.md</code></td><td>TinkyWiki Code Review</td><td>Module/function analysis</td></tr>
+          <tr><td><code>tinkywiki-architect.agent.md</code></td><td>TinkyWiki Architecture Explorer</td><td>System design & data flow</td></tr>
+          <tr><td><code>tinkywiki-comparison.agent.md</code></td><td>TinkyWiki Comparison</td><td>Multi-repo side-by-side analysis</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Creating your own agent</h3>
+    <p>Create a <code>.agent.md</code> file in <code>.github/agents/</code>:</p>
+    <pre><code>---
+name: TinkyWiki Researcher
+description: Explores open-source codebases using Google TinkyWiki
+model: GPT-5 Mini (copilot)
+user-invokable: false
+tools:
+  - 'read'
+  - 'tinkywiki-mcp/tinkywiki_list_topics'
+  - 'tinkywiki-mcp/tinkywiki_read_structure'
+  - 'tinkywiki-mcp/tinkywiki_read_contents'
+  - 'tinkywiki-mcp/tinkywiki_search_wiki'
+  - 'tinkywiki-mcp/tinkywiki_request_indexing'
+---
+You are a codebase research agent with access to Google TinkyWiki
+via MCP tools. Your job is to help users understand open-source
+repositories by exploring their documentation.
+
+## Workflow
+1. tinkywiki_read_structure → discover sections (cheapest)
+2. tinkywiki_list_topics → titles + 200-char previews
+3. tinkywiki_read_contents(section_title=...) → targeted reads
+4. tinkywiki_search_wiki → specific implementation questions
+5. Synthesize into a clear, cited answer
+
+## Rules
+- Always cite which section your answer is based on
+- If NOT_INDEXED, call tinkywiki_request_indexing and inform user
+- Use owner/repo shorthand for repo_url parameters
+- Never fabricate information — only report what tools return</code></pre>
+
+    <h3>Key design choices</h3>
+    <ul>
+      <li><strong>Pure router master</strong> — The master has only the <code>agent</code> tool (zero MCP tools). This forces delegation and saves tokens by eliminating redundant availability checks.</li>
+      <li><strong><code>user-invokable: false</code></strong> — Subagents are hidden from the picker; only the master is user-facing.</li>
+      <li><strong><code>'read'</code> tool</strong> — Required for on-demand skill loading via SKILL.md files.</li>
+      <li><strong>Subagents handle errors</strong> — Each subagent has all 5 MCP tools and handles NOT_INDEXED errors independently. No pre-checking by the master needed.</li>
+      <li><strong>Explicit tool names</strong> — Use <code>'tinkywiki-mcp/tinkywiki_list_topics'</code> format (must match the server name in <code>.vscode/mcp.json</code>).</li>
+    </ul>
+
+    <h3>Use it in chat</h3>
+    <p>Type <code>@tinkywiki</code> in VS Code Chat to invoke the master orchestrator, which routes to the right specialist.</p>
+
+    <!-- ============================================================ -->
+    <!-- GITHUB COPILOT CLI -->
+    <!-- ============================================================ -->
+    <h2>GitHub Copilot CLI</h2>
+    <p><a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli" target="_blank">GitHub Copilot CLI</a> is a powerful terminal-based AI agent that supports <strong>Agent Skills</strong>, <strong>MCP servers</strong>, <strong>custom instructions</strong>, and <strong>custom agents</strong> — the same customization primitives as VS Code.</p>
+
+    <h3>Step 1 — Install Copilot CLI</h3>
+    <pre><code># npm (all platforms — requires Node.js 22+)
+npm install -g @github/copilot
+
+# WinGet (Windows)
+winget install GitHub.Copilot
+
+# Homebrew (macOS / Linux)
+brew install copilot-cli
+
+# Install script (macOS / Linux)
+curl -fsSL https://gh.io/copilot-install | bash</code></pre>
+    <p>Then start a session with <code>copilot</code> and authenticate using the <code>/login</code> slash command.</p>
+
+    <h3>Step 2 — Add TinkyWiki MCP server</h3>
+    <p>Inside an interactive Copilot CLI session, use the <code>/mcp add</code> slash command:</p>
+    <pre><code># In a Copilot CLI session:
+/mcp add
+
+# Fill in the fields:
+#   Name:    tinkywiki
+#   Command: tinkywiki-mcp
+#   Args:    (leave empty)
+# Press Ctrl+S to save</code></pre>
+    <p>The server config is stored in <code>~/.copilot/mcp-config.json</code>. You can also edit this file directly:</p>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+    <p>Verify the server is active with <code>/mcp</code> in the interactive session.</p>
+
+    <h3>Step 3 — Skills (automatic)</h3>
+    <p>Copilot CLI reads Agent Skills from the same locations as VS Code:</p>
+    <table>
+      <thead><tr><th>Scope</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td>Repository</td><td><code>.github/skills/</code></td></tr>
+        <tr><td>User (personal)</td><td><code>~/.copilot/skills/</code></td></tr>
+      </tbody>
+    </table>
+    <p>If you created the <code>.github/skills/tinkywiki-usage/SKILL.md</code> file from the VS Code section above (already included in this repo), Copilot CLI will automatically discover and use it when relevant.</p>
+
+    <h3>Step 4 — Custom instructions (automatic)</h3>
+    <p>Copilot CLI automatically picks up:</p>
+    <ul>
+      <li><code>.github/copilot-instructions.md</code> — repository-wide instructions</li>
+      <li><code>.github/instructions/**/*.instructions.md</code> — path-specific instructions</li>
+      <li><code>AGENTS.md</code> — multi-agent compatible instructions</li>
+    </ul>
+    <p>All instruction files combine and are included in your prompts automatically.</p>
+
+    <h3>Step 5 — Custom agents</h3>
+    <p>Copilot CLI loads custom agents from:</p>
+    <table>
+      <thead><tr><th>Scope</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td>User-level</td><td><code>~/.copilot/agents/</code></td></tr>
+        <tr><td>Repository-level</td><td><code>.github/agents/</code></td></tr>
+        <tr><td>Organization-level</td><td><code>.github-private/agents/</code></td></tr>
+      </tbody>
+    </table>
+    <p>Use agents with the <code>/agent</code> slash command, reference them in a prompt, or pass <code>--agent=name</code> on the command line:</p>
+    <pre><code># Interactive mode — pick from list
+/agent
+
+# Reference in a prompt
+Use the tinkywiki-researcher agent to explain React fiber
+
+# Programmatic mode
+copilot --agent=tinkywiki-researcher -p "Explain React fiber"</code></pre>
+
+    <h3>Step 6 — MCP tool permissions</h3>
+    <p>By default Copilot CLI asks approval before using MCP tools. You can pre-approve TinkyWiki tools:</p>
+    <pre><code># Allow all tools from the tinkywiki server
+copilot --allow-tool 'tinkywiki'
+
+# Or allow all tools globally (use with caution)
+copilot --allow-all-tools</code></pre>
+
+    <h3>Copilot CLI built-in agents</h3>
+    <p>Copilot CLI ships with specialized agents you can combine with TinkyWiki:</p>
+    <table>
+      <thead><tr><th>Agent</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Explore</strong></td><td>Quick codebase analysis without adding to main context</td></tr>
+        <tr><td><strong>Task</strong></td><td>Execute commands (tests, builds) with summary output</td></tr>
+        <tr><td><strong>Plan</strong></td><td>Analyze dependencies and create implementation plans</td></tr>
+        <tr><td><strong>Code-review</strong></td><td>Review changes, surfacing genuine issues</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- CLAUDE DESKTOP -->
+    <!-- ============================================================ -->
+    <h2>Claude Desktop</h2>
+    <p>Claude Desktop connects to MCP servers via <code>claude_desktop_config.json</code>.</p>
+
+    <h3>Step 1 — Open config</h3>
+    <p>Open Claude Desktop, go to <strong>Settings → Developer → Edit Config</strong>. The file is at:</p>
+    <table>
+      <thead><tr><th>OS</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>macOS</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr>
+        <tr><td>Windows</td><td><code>%APPDATA%\Claude\claude_desktop_config.json</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 2 — Add TinkyWiki MCP</h3>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+    <p>If you installed via <code>uvx</code>:</p>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "uvx",
+      "args": ["tinkywiki-mcp"]
+    }
+  }
+}</code></pre>
+
+    <h3>Step 3 — Restart Claude Desktop</h3>
+    <p>Quit and relaunch Claude Desktop. You should see an MCP indicator in the chat input. Click it to see the 4 TinkyWiki tools.</p>
+
+    <!-- ============================================================ -->
+    <!-- CURSOR -->
+    <!-- ============================================================ -->
+    <h2>Cursor</h2>
+    <p>Cursor supports MCP servers via <code>.cursor/mcp.json</code> (project-level) or <code>~/.cursor/mcp.json</code> (global).</p>
+
+    <h3>Project-level config</h3>
+    <p>Create <code>.cursor/mcp.json</code> in your project root:</p>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+
+    <h3>Global config</h3>
+    <p>Create <code>~/.cursor/mcp.json</code> to make TinkyWiki available in all Cursor projects:</p>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+
+    <h3>With Python/uvx</h3>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "uvx",
+      "args": ["tinkywiki-mcp"]
+    }
+  }
+}</code></pre>
+    <p>Once configured, TinkyWiki tools appear in Cursor's <strong>Available Tools</strong> list in Agent mode. Cursor loads them automatically when relevant.</p>
+
+    <!-- ============================================================ -->
+    <!-- WINDSURF -->
+    <!-- ============================================================ -->
+    <h2>Windsurf</h2>
+    <p>Windsurf uses <code>~/.codeium/windsurf/mcp_config.json</code> for MCP server configuration. You can also add servers via the MCP Marketplace in the Cascade panel.</p>
+
+    <h3>Manual config</h3>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "tinkywiki-mcp"
+    }
+  }
+}</code></pre>
+
+    <h3>With uvx</h3>
+    <pre><code>{
+  "mcpServers": {
+    "tinkywiki": {
+      "command": "uvx",
+      "args": ["tinkywiki-mcp"]
+    }
+  }
+}</code></pre>
+    <p>After saving, restart Windsurf. The tools appear in Cascade's MCP tools panel.</p>
+
+    <!-- ============================================================ -->
+    <!-- CLAUDE CODE -->
+    <!-- ============================================================ -->
+    <h2>Claude Code &amp; Other Agent Skills Clients</h2>
+    <p>The Agent Skills standard (<a href="https://agentskills.io/" target="_blank">agentskills.io</a>) is supported by a growing ecosystem of tools:</p>
+    <ul>
+      <li><strong>Claude Code</strong> — reads from <code>.claude/skills/</code></li>
+      <li><strong>GitHub Copilot CLI</strong> — uses the same <code>.github/skills/</code></li>
+      <li><strong>Roo Code</strong>, <strong>OpenAI Codex</strong>, <strong>Factory</strong>, <strong>Qodo</strong>, <strong>Goose</strong>, <strong>Firebender</strong></li>
+    </ul>
+    <p>For Claude Code, create the skill at <code>.claude/skills/tinkywiki-usage/SKILL.md</code> using the same SKILL.md content shown in the VS Code section above.</p>
+
+    <!-- ============================================================ -->
+    <!-- SSE MODE -->
+    <!-- ============================================================ -->
+    <h2>SSE / HTTP Mode (Any Client)</h2>
+    <p>For clients that support remote MCP servers via SSE or Streamable HTTP:</p>
+    <pre><code># Start TinkyWiki MCP in SSE mode
+tinkywiki-mcp --sse --port 8080</code></pre>
+
+    <p>Then point your client to the endpoint:</p>
+    <pre><code># Cursor / Windsurf remote config example
+{
+  "mcpServers": {
+    "tinkywiki": {
+      "url": "http://localhost:8080/sse"
+    }
+  }
+}</code></pre>
+
+    <!-- ============================================================ -->
+    <!-- COMPARISON TABLE -->
+    <!-- ============================================================ -->
+    <h2>When to Use What</h2>
+    <p>VS Code offers multiple customization layers. Here's when to use each:</p>
+    <table>
+      <thead><tr><th>Mechanism</th><th>Scope</th><th>Activation</th><th>Best For</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Agent Skills</strong></td>
+          <td>Portable (cross-tool)</td>
+          <td>Auto + slash command</td>
+          <td>Reusable capabilities with scripts and examples</td>
+        </tr>
+        <tr>
+          <td><strong>Custom Instructions</strong></td>
+          <td>VS Code + GitHub</td>
+          <td>Always-on or glob-matched</td>
+          <td>Project-wide coding standards and guidelines</td>
+        </tr>
+        <tr>
+          <td><strong>Prompt Files</strong></td>
+          <td>VS Code</td>
+          <td>Manual (slash command)</td>
+          <td>Repeatable tasks like scaffolding or reviews</td>
+        </tr>
+        <tr>
+          <td><strong>Custom Agents</strong></td>
+          <td>VS Code</td>
+          <td>Manual (agent picker)</td>
+          <td>Specialized personas with restricted tool sets</td>
+        </tr>
+        <tr>
+          <td><strong>MCP Server</strong></td>
+          <td>Universal</td>
+          <td>Auto (available tools)</td>
+          <td>Making tools available to any MCP-compatible client</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- DIAGNOSTICS -->
+    <!-- ============================================================ -->
+    <h2>Troubleshooting</h2>
+    <h3>VS Code Diagnostics</h3>
+    <p>Right-click in the Chat view and select <strong>Diagnostics</strong> to see all loaded skills, agents, prompts, and instructions. You can also run the quick commands:</p>
+    <pre><code># Quick access commands in VS Code chat input:
+/skills         → Configure Skills menu
+/instructions   → Configure Instructions menu
+/prompts        → Configure Prompt Files menu
+/agents         → Configure Custom Agents menu</code></pre>
+
+    <h3>Common issues</h3>
+    <table>
+      <thead><tr><th>Issue</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Skill not appearing in <code>/</code> menu</td>
+          <td>Check <code>SKILL.md</code> is in a supported location and has valid YAML frontmatter with <code>name</code> and <code>description</code>. The skill name must match its parent folder name.</td>
+        </tr>
+        <tr>
+          <td>MCP tools not available</td>
+          <td>Verify <code>.vscode/mcp.json</code> has the server config and <code>tinkywiki-mcp</code> is installed and on PATH</td>
+        </tr>
+        <tr>
+          <td>Instructions not applying</td>
+          <td>Check <code>applyTo</code> glob pattern matches your files; verify in Diagnostics view</td>
+        </tr>
+        <tr>
+          <td>Claude Desktop: no MCP indicator</td>
+          <td>Fully quit and restart; check config file path and JSON syntax</td>
+        </tr>
+        <tr>
+          <td>Cursor: tools not showing</td>
+          <td>Verify <code>.cursor/mcp.json</code> is valid JSON; restart Cursor</td>
+        </tr>
+        <tr>
+          <td>Skill not loading in agent</td>
+          <td>Ensure the agent has <code>'read'</code> in its tools list. VS Code needs the read tool to load skill content on demand. Check <code>chat.useAgentSkills</code> is <code>true</code> in settings.</td>
+        </tr>
+        <tr>
+          <td>Agent tool name mismatch</td>
+          <td>Tool references in <code>.agent.md</code> must use the format <code>'server-name/tool_name'</code> matching the server name in <code>.vscode/mcp.json</code>. For this repo: <code>'tinkywiki-mcp/tinkywiki_list_topics'</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- REFERENCES -->
+    <!-- ============================================================ -->
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://agentskills.io/" target="_blank">Agent Skills Standard — agentskills.io</a></li>
+      <li><a href="https://code.visualstudio.com/docs/copilot/customization/agent-skills" target="_blank">VS Code: Agent Skills Documentation</a></li>
+      <li><a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli" target="_blank">GitHub Copilot CLI: About &amp; Installation</a></li>
+      <li><a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli" target="_blank">GitHub Copilot CLI: Usage Guide</a></li>
+      <li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions" target="_blank">VS Code: Custom Instructions</a></li>
+      <li><a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files" target="_blank">VS Code: Prompt Files</a></li>
+      <li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-agents" target="_blank">VS Code: Custom Agents</a></li>
+      <li><a href="https://modelcontextprotocol.io/quickstart/user" target="_blank">MCP: Connect to Local Servers (Claude Desktop)</a></li>
+      <li><a href="https://cursor.com/docs/context/mcp" target="_blank">Cursor: MCP Configuration</a></li>
+      <li><a href="https://docs.windsurf.com/windsurf/cascade/mcp" target="_blank">Windsurf: MCP Configuration</a></li>
+      <li><a href="https://github.com/github/awesome-copilot" target="_blank">GitHub: Awesome Copilot (community skills &amp; agents)</a></li>
+      <li><a href="https://github.com/anthropics/skills" target="_blank">Anthropic: Reference skills repository</a></li>
+    </ul>
+
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

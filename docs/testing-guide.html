@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Testing Guide — TinkyWiki MCP Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<button class="burger" aria-label="Toggle navigation">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      TinkyWiki MCP
+    </div>
+    <span class="version">v1.3.0</span>
+  </div>
+  <nav>
+    <div class="nav-section">Overview</div>
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="release-notes.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+      Release Notes
+    </a>
+    <div class="nav-section">Getting Started</div>
+    <a href="installation.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Installation
+    </a>
+    <a href="setup.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Editor Setup
+    </a>
+    <div class="nav-section">Reference</div>
+    <a href="tools.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Tools
+    </a>
+    <a href="configuration.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Configuration
+    </a>
+    <a href="architecture.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      Architecture
+    </a>
+    <div class="nav-section">Guides</div>
+    <a href="agents.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5C7.33 7.83 4 10.6 4 13a8 8 0 0 0 16 0c0-2.4-3.33-5.17-5-6.5"/></svg>
+      Agentic AI Guide
+    </a>
+    <a href="skills.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Skills &amp; Client Setup
+    </a>
+    <a href="testing-guide.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Agent Testing Guide
+    </a>
+    <a href="demo.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Cloudmeru/TinkyWiki-MCP" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://pypi.org/project/tinkywiki-mcp/" target="_blank">PyPI</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="content">
+    <h1 class="page-title">Agent Testing Guide</h1>
+    <p class="page-subtitle">Sample prompts and validation checklists for testing the VS Code custom agents.</p>
+
+    <!-- Prerequisites -->
+    <h2>Prerequisites</h2>
+    <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+      <h3>Before You Test</h3>
+      <ol>
+        <li>The <code>tinkywiki-mcp</code> MCP server must be running and configured in <code>.vscode/mcp.json</code> (included in this repo).</li>
+        <li>All 6 <code>.agent.md</code> files must be in <code>.github/agents/</code>.</li>
+        <li>Test in the <strong>VS Code Chat panel</strong> (<kbd>Ctrl+Shift+I</kbd>), not inline chat. The <code>.agent.md</code> custom agents only activate when invoked via <code>@tinkywiki</code> in the Chat panel. The <code>runSubagent</code> tool in regular Copilot chat does NOT wire up MCP tools to subagents.</li>
+        <li>Custom agents only activate via <code>@tinkywiki</code> in the Chat panel.</li>
+      </ol>
+    </div>
+
+    <!-- Agent Configuration Reference -->
+    <h2>Agent Configuration Reference</h2>
+    <p>Current YAML frontmatter for each agent (must match <code>.github/agents/</code> files):</p>
+
+    <h3>Master Orchestrator (<code>tinkywiki.agent.md</code>)</h3>
+    <pre><code>name: TinkyWiki
+description: Master agent that routes your request to the right TinkyWiki specialist
+model: GPT-5.3-Codex
+tools:
+  [read, agent, tinkywiki-mcp/*]
+agents:
+  [TinkyWiki Researcher, TinkyWiki Code Review, TinkyWiki Architecture Explorer, TinkyWiki Comparison, TinkyWiki Synthesizer]</code></pre>
+    <div class="callout callout-tip">
+      <strong>⚠️ Model:</strong> The master must use a <strong>1× credit model</strong> like <code>GPT-5.3-Codex</code>. Free/low-tier models (GPT-5 mini) produce inconsistent routing, truncated results, and skipped delegation.<br><br>
+      <strong>Why <code>tinkywiki-mcp/*</code> on the master?</strong> The master must declare MCP tools so they are exposed to subagents when spawned. The master itself still acts as a router — it delegates via <code>agent</code> and does not call TinkyWiki tools directly.
+    </div>
+
+    <h3>Subagents</h3>
+    <pre><code># Researcher, Code Review, Architecture Explorer, Comparison:
+model: GPT-5 mini
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]
+
+# Synthesizer (needs stronger reasoning for multi-repo integration):
+model: GPT-5.3-Codex
+user-invokable: false
+tools:
+  [read, tinkywiki-mcp/*]</code></pre>
+
+    <table>
+      <thead><tr><th>Agent File</th><th>Name</th><th>Specialty</th></tr></thead>
+      <tbody>
+        <tr><td><code>tinkywiki-researcher.agent.md</code></td><td>TinkyWiki Researcher</td><td>General exploration</td></tr>
+        <tr><td><code>tinkywiki-reviewer.agent.md</code></td><td>TinkyWiki Code Review</td><td>Module/function analysis</td></tr>
+        <tr><td><code>tinkywiki-architect.agent.md</code></td><td>TinkyWiki Architecture Explorer</td><td>System design</td></tr>
+        <tr><td><code>tinkywiki-comparison.agent.md</code></td><td>TinkyWiki Comparison</td><td>Multi-repo comparison</td></tr>
+        <tr><td><code>tinkywiki-synthesizer.agent.md</code></td><td>TinkyWiki Synthesizer</td><td>Combine parts from multiple repos</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Quick Reference -->
+    <h2>Routing Quick Reference</h2>
+    <table>
+      <thead><tr><th>User Intent</th><th>Subagent</th><th>Signal Words</th></tr></thead>
+      <tbody>
+        <tr><td>General exploration</td><td>TinkyWiki Researcher</td><td>"what is", "explain", "tell me about", "overview"</td></tr>
+        <tr><td>Code analysis</td><td>TinkyWiki Code Review</td><td>"review", "analyse", "module", "function", "code"</td></tr>
+        <tr><td>System design</td><td>TinkyWiki Architecture Explorer</td><td>"architecture", "design", "structure", "hierarchy"</td></tr>
+        <tr><td>Multi-repo comparison</td><td>TinkyWiki Comparison</td><td>"compare", "vs", "difference", "or"</td></tr>
+        <tr><td>Multi-repo synthesis</td><td>TinkyWiki Synthesizer</td><td>"combine", "merge", "build using", "take X from A and Y from B"</td></tr>
+        <tr><td>Unindexed repo</td><td>TinkyWiki Researcher</td><td>Subagent detects NOT_INDEXED and calls <code>tinkywiki_request_indexing</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══ Scenario 1: Researcher ═══ -->
+    <h2>1. TinkyWiki Researcher (General Exploration)</h2>
+    <p><strong>Routing trigger:</strong> General "what is", "explain", "tell me about" questions.</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki What is facebook/prophet and what are its main features?</code></pre>
+      <pre><code>@tinkywiki Explain the key concepts behind pallets/flask</code></pre>
+      <pre><code>@tinkywiki What topics does TinkyWiki have for microsoft/vscode?</code></pre>
+      <pre><code># Bare keyword — resolves automatically (v1.2.0+)
+@tinkywiki What is prophet and what are its main features?</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master spawns <strong>TinkyWiki Researcher</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>2</td><td>Researcher calls <code>tinkywiki_list_topics</code> to discover available wiki sections</td></tr>
+        <tr><td>3</td><td>Researcher calls <code>tinkywiki_read_structure</code> and/or <code>tinkywiki_read_contents</code></td></tr>
+        <tr><td>4</td><td>Researcher synthesises a summary from TinkyWiki content</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master does <strong>not</strong> answer from its own knowledge</li>
+      <li>Master uses the <code>agent</code> tool (not direct tool calls to read/search)</li>
+      <li>Researcher cites TinkyWiki sections in its answer</li>
+      <li>Response contains real documentation content, not generic descriptions</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+      <li>If a bare keyword was used, response is prefixed with a resolution note (e.g. <code>&gt; Resolved: keyword "prophet" → facebook/prophet</code>)</li>
+    </ul>
+    <h2>2. TinkyWiki Code Review (Module / Function Analysis)</h2>
+    <p><strong>Routing trigger:</strong> "review", "analyse", "what does module X do", code-level questions.</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki Review the forecaster module in facebook/prophet — what does it do?</code></pre>
+      <pre><code>@tinkywiki What code patterns are used in the routing module of pallets/flask?</code></pre>
+      <pre><code>@tinkywiki Analyse the error handling approach in fastapi/fastapi</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master spawns <strong>TinkyWiki Code Review</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>2</td><td>Reviewer calls <code>tinkywiki_search_wiki</code> to find relevant code documentation</td></tr>
+        <tr><td>3</td><td>Reviewer calls <code>tinkywiki_read_contents</code> for detailed section content</td></tr>
+        <tr><td>4</td><td>Reviewer provides code-level analysis with citations</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master delegates to <strong>TinkyWiki Code Review</strong>, not Researcher</li>
+      <li>Reviewer focuses on code structure, patterns, and implementation details</li>
+      <li>Response references specific modules, classes, or functions</li>
+      <li>No hallucinated code — all content sourced from TinkyWiki</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+    </ul>
+
+    <!-- ═══ Scenario 3: Architecture ═══ -->
+    <h2>3. TinkyWiki Architecture Explorer (System Design)</h2>
+    <p><strong>Routing trigger:</strong> "architecture", "design", "how is X structured", "component hierarchy".</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki Explain the overall architecture of facebook/react</code></pre>
+      <pre><code>@tinkywiki How is the plugin system architected in vitejs/vite?</code></pre>
+      <pre><code>@tinkywiki Describe the component hierarchy and data flow in vuejs/core</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master spawns <strong>TinkyWiki Architecture Explorer</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>2</td><td>Explorer calls <code>tinkywiki_read_structure</code> to map the documentation tree</td></tr>
+        <tr><td>3</td><td>Explorer calls <code>tinkywiki_read_contents</code> for architecture-related sections</td></tr>
+        <tr><td>4</td><td>Explorer produces a structured architecture overview</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master delegates to <strong>TinkyWiki Architecture Explorer</strong></li>
+      <li>Response covers high-level design (layers, components, data flow)</li>
+      <li>Includes or references structural breakdowns from TinkyWiki</li>
+      <li>Does not devolve into code-level details (that's the Reviewer's job)</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+    </ul>
+
+    <!-- ═══ Scenario 4: Comparison ═══ -->
+    <h2>4. TinkyWiki Comparison (Multi-Repo)</h2>
+    <p><strong>Routing trigger:</strong> "compare", "vs", "difference between", "X or Y".</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki Compare fastapi/fastapi vs pallets/flask — architecture, performance, and developer experience</code></pre>
+      <pre><code>@tinkywiki Compare facebook/react vs vuejs/core in terms of rendering strategy</code></pre>
+      <pre><code>@tinkywiki What are the differences between expressjs/express and koajs/koa?</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master spawns <strong>TinkyWiki Comparison</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>2</td><td>Comparison agent calls TinkyWiki tools for <strong>each</strong> repo independently</td></tr>
+        <tr><td>3</td><td>Agent builds a side-by-side analysis from real documentation</td></tr>
+        <tr><td>4</td><td>Agent produces a structured comparison table or narrative</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master delegates to <strong>TinkyWiki Comparison</strong>, not Researcher</li>
+      <li>Agent fetches documentation from <strong>both</strong> repos (not just one)</li>
+      <li>Comparison is grounded in TinkyWiki content, not generic knowledge</li>
+      <li>Response includes a structured comparison (table, bullet list, or sections)</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+    </ul>
+
+    <!-- ═══ Scenario 5: Indexing ═══ -->
+    <h2>5. Request Indexing (Unindexed Repo — Subagent Handles It)</h2>
+    <p><strong>Routing trigger:</strong> Repo that returns <code>NOT_INDEXED</code> from any TinkyWiki tool.</p>
+    <p><strong>New in v1.3.0:</strong> The tool now uses <a href="https://modelcontextprotocol.io/specification/2025-06-18/server/elicitation">MCP Elicitation</a> to confirm with the user before submitting an indexing request.</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki Check if Snowflake-Labs/agent-world-model is available on TinkyWiki</code></pre>
+      <pre><code>@tinkywiki What does TinkyWiki have for some-org/obscure-repo?</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master classifies this as a general exploration request</td></tr>
+        <tr><td>2</td><td>Master spawns <strong>TinkyWiki Researcher</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>3</td><td>Researcher calls a TinkyWiki tool and gets <code>NOT_INDEXED</code> error</td></tr>
+        <tr><td>4</td><td>Researcher calls <code>tinkywiki_request_indexing</code> to submit the repo</td></tr>
+        <tr><td>5</td><td>Server asks user for confirmation via MCP Elicitation (v1.3.0+)</td></tr>
+        <tr><td>6</td><td>Researcher reports back; Master presents the full result to user</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master does <strong>not</strong> call any MCP tools directly (it delegates via <code>agent</code>)</li>
+      <li>A subagent detects <code>NOT_INDEXED</code> and calls <code>tinkywiki_request_indexing</code></li>
+      <li>User is asked to confirm indexing via elicitation prompt (v1.3.0+)</li>
+      <li>User is informed the repo has been submitted for indexing</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+    </ul>
+
+    <!-- ═══ Scenario 6: Synthesizer ═══ -->
+    <h2>6. TinkyWiki Synthesizer (Multi-Repo Solution Building)</h2>
+    <p><strong>Routing trigger:</strong> User wants to BUILD something new by combining parts from multiple repos. Distinct from Comparison which evaluates/contrasts.</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki I want to build an API server that uses the routing system from pallets/flask and the async handling from fastapi/fastapi. Help me design it.</code></pre>
+      <pre><code>@tinkywiki Take the plugin architecture from vitejs/vite and the component model from vuejs/core — design a new framework that combines both.</code></pre>
+      <pre><code>@tinkywiki Combine the authentication approach from supabase/supabase with the event pipeline from apache/kafka into a real-time auth notification system.</code></pre>
+      <pre><code># Intentionally vague — Synthesizer should DISCOVER which parts to take
+@tinkywiki Can you combine the best parts from fastapi/fastapi and pallets/flask into a new web framework solution?</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master detects synthesis intent (“build”, “combine”, “take X from A and Y from B”)</td></tr>
+        <tr><td>2</td><td>Master spawns <strong>TinkyWiki Synthesizer</strong> via the <code>agent</code> tool</td></tr>
+        <tr><td>3</td><td>Synthesizer researches each repo using TinkyWiki tools (<code>read_structure</code>, <code>read_contents</code>, <code>search_wiki</code>)</td></tr>
+        <tr><td>4</td><td>Synthesizer extracts the specific parts the user requested from each repo</td></tr>
+        <tr><td>5</td><td>Synthesizer identifies cross-repo conflicts and proposes adapters</td></tr>
+        <tr><td>6</td><td>Synthesizer delivers a blueprint: architecture diagram, directory structure, integration code, implementation guide</td></tr>
+        <tr><td>7</td><td>For vague requests: Synthesizer shows a “Parts Selected” table explaining WHY it chose each part</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Master delegates to <strong>TinkyWiki Synthesizer</strong>, not Comparison</li>
+      <li>Synthesizer fetches documentation from <strong>all</strong> mentioned repos</li>
+      <li>Response includes a <strong>Parts Extracted</strong> table citing source repos</li>
+      <li>Response includes <strong>Compatibility Analysis</strong> (conflicts + resolutions)</li>
+      <li>Response includes <strong>Integration Architecture</strong> (Mermaid diagram or description)</li>
+      <li>Response includes <strong>Directory Structure</strong> for the new project</li>
+      <li>Response includes <strong>Implementation Guide</strong> with actionable steps</li>
+      <li>For vague requests: includes <strong>Parts Selected</strong> table with reasoning</li>
+      <li>All content is grounded in TinkyWiki data, not generic knowledge</li>
+      <li>Master presents the <strong>full</strong> subagent response (not a brief summary)</li>
+    </ul>
+
+    <!-- ═══ Scenario 7: Keyword Resolution ═══ -->
+    <h2>7. Keyword Resolution &amp; Disambiguation (Bare Product Names)</h2>
+    <p><strong>Routing trigger:</strong> Any prompt using a bare keyword instead of <code>owner/repo</code> format.</p>
+
+    <h3>Sample Prompts</h3>
+    <div class="tool-card">
+      <pre><code>@tinkywiki What is vue?</code></pre>
+      <pre><code>@tinkywiki Explain the architecture of react</code></pre>
+      <pre><code>@tinkywiki Compare vue vs react</code></pre>
+      <pre><code>@tinkywiki What topics does openclaw have?</code></pre>
+    </div>
+
+    <h3>Expected Behaviour</h3>
+    <table>
+      <thead><tr><th>Step</th><th>What Should Happen</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Master delegates to the appropriate subagent (Researcher, Comparison, etc.)</td></tr>
+        <tr><td>2</td><td>Subagent calls a TinkyWiki tool with the bare keyword (e.g. <code>repo_url="vue"</code>)</td></tr>
+        <tr><td>3</td><td>Tool detects bare keyword and triggers <strong>MCP Elicitation</strong> (if multiple ambiguous repos found)</td></tr>
+        <tr><td>4</td><td>VS Code shows a selection prompt: “Multiple repositories match 'vue'. Which do you want?”</td></tr>
+        <tr><td>5</td><td>User selects the desired repo (e.g. <code>vuejs/core</code> for Vue 3)</td></tr>
+        <tr><td>6</td><td>Response includes resolution note: <code>&gt; <strong>Resolved:</strong> keyword "vue" → <strong>vuejs/core</strong> (52,900★)</code></td></tr>
+        <tr><td>7</td><td>Response shows top alternative candidates</td></tr>
+        <tr><td>8</td><td>The rest of the response contains normal TinkyWiki documentation</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <strong>Auto-select (no elicitation):</strong>
+      <ul style="margin-bottom:0">
+        <li>Canonical match: “openclaw” → <code>openclaw/openclaw</code> (owner == repo == keyword)</li>
+        <li>Single result: only one repo found → auto-selected</li>
+      </ul>
+      <br>
+      <strong>Fallback:</strong> If elicitation is unavailable (client doesn’t support it), heuristic selection by star count is used.
+    </div>
+
+    <h3>Validation Checklist</h3>
+    <ul>
+      <li>Bare keyword “vue” triggers elicitation with multiple options (vuejs/vue, vuejs/core, etc.)</li>
+      <li>User can select <code>vuejs/core</code> (Vue 3) instead of auto-picking <code>vuejs/vue</code> (Vue 2)</li>
+      <li>Bare keyword “openclaw” auto-resolves to <code>openclaw/openclaw</code> (canonical match, NO elicitation)</li>
+      <li>Bare keyword “react” triggers elicitation showing facebook/react and alternatives</li>
+      <li>Resolution note appears at the top of the response with star count</li>
+      <li>Alternative candidates are listed</li>
+      <li>Declining/cancelling elicitation falls back to heuristic selection</li>
+      <li><code>owner/repo</code> format still works as before (no resolution note, no elicitation)</li>
+      <li>Full URLs still work as before (no resolution note, no elicitation)</li>
+    </ul>
+
+    <!-- ═══ Full Workflow Scenario ═══ -->
+    <h2 id="full-workflow">Full Workflow Scenario</h2>
+    <p>This single prompt is designed to trigger all 5 workflow steps (Discover → Navigate → Read → Search → Synthesize) of the <strong>Researcher</strong> subagent.</p>
+
+    <div class="tool-card">
+      <h3>Multi-Step Scenario Prompt</h3>
+      <pre><code>@tinkywiki I want a deep technical explanation of the React Compiler's
+compilation pipeline.
+
+Specifically:
+1. First, check what topics Google TinkyWiki has for facebook/react.
+2. Then look at the full table of contents to find sections about
+   the compiler.
+3. Read the section on "React Compiler Internals" to understand the
+   multi-stage compilation pipeline, the IRs (HIR and ReactiveFunction),
+   and the key optimization passes.
+4. Search for "How does the React Compiler handle memoization and
+   reactive scopes?" to get implementation-level details.
+5. Combine everything into a single technical summary that covers:
+   - The overall compilation pipeline (AST → HIR → ReactiveFunction → codegen)
+   - The key intermediate representations and their purpose
+   - How reactive scopes are inferred and merged
+   - How the compiler replaces manual useMemo/useCallback
+   - Cite which TinkyWiki sections your answer comes from</code></pre>
+    </div>
+
+    <h3>Expected Tool Calls</h3>
+    <table>
+      <thead><tr><th>Step</th><th>Phase</th><th>Tool Call</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Discover</strong></td><td><code>tinkywiki_list_topics("facebook/react")</code></td><td>Verify wiki exists, see available topics</td></tr>
+        <tr><td>2</td><td><strong>Navigate</strong></td><td><code>tinkywiki_read_structure("facebook/react")</code></td><td>Get full ToC with section hierarchy</td></tr>
+        <tr><td>3</td><td><strong>Read</strong></td><td><code>tinkywiki_read_contents("facebook/react", "React Compiler Internals")</code></td><td>Fetch detailed compiler pipeline docs</td></tr>
+        <tr><td>4</td><td><strong>Search</strong></td><td><code>tinkywiki_search_wiki("facebook/react", "How does the React Compiler handle memoization?")</code></td><td>Get Gemini-powered implementation details</td></tr>
+        <tr><td>5</td><td><strong>Synthesize</strong></td><td><em>(no tool call — agent combines results)</em></td><td>Produce cited summary from steps 1-4</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Full Workflow Validation</h3>
+    <ul>
+      <li><strong>Step 1:</strong> Returns <code>status: "ok"</code> with topic list (expect ~26 sections)</li>
+      <li><strong>Step 2:</strong> Returns <code>status: "ok"</code> with hierarchical section structure</li>
+      <li><strong>Step 3:</strong> Returns <code>status: "ok"</code> with detailed content about HIR, ReactiveFunction, compilation passes</li>
+      <li><strong>Step 4:</strong> Returns <code>status: "ok"</code> OR <code>RETRY_EXHAUSTED</code> (upstream timeout is a known TinkyWiki issue)</li>
+      <li><strong>Step 5:</strong> Agent produces a coherent summary citing specific TinkyWiki sections</li>
+      <li>All responses include <code>content_hash</code> and <code>idempotency_key</code></li>
+      <li>Subsequent identical calls return in &lt;10ms (cache hit)</li>
+      <li>Agent does NOT call the same tool &gt;2 times for the same repo</li>
+    </ul>
+
+    <!-- Alternative Repos -->
+    <h2>Alternative Repos for Testing</h2>
+    <p>If a repo is too large or slow during testing, try these. You can use <strong>bare keywords</strong> (v1.2.0+) — the server resolves them automatically:</p>
+    <table>
+      <thead><tr><th>Input</th><th>Resolves To</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>anthropics/anthropic-sdk-python</code></td><td><em>exact match</em></td><td>Fast wiki generation, good for quick tests</td></tr>
+        <tr><td><code>fastapi</code></td><td><code>fastapi/fastapi</code></td><td>Bare keyword — well-indexed, good for architecture + review tests</td></tr>
+        <tr><td><code>prophet</code></td><td><code>facebook/prophet</code></td><td>Bare keyword — good for researcher + review tests</td></tr>
+        <tr><td><code>vscode</code></td><td><code>microsoft/vscode</code></td><td>Bare keyword — large repo, may be slower</td></tr>
+        <tr><td><code>microsoft/vscode-copilot-chat</code></td><td><em>exact match</em></td><td>Microsoft tooling</td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 2rem;">See also: <a href="agents.html"><strong>Agentic AI Guide</strong></a> — full agent definitions, architecture, and lessons learned.</p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

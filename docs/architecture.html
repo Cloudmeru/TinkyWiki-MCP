@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture — TinkyWiki MCP Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<button class="burger" aria-label="Toggle navigation">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      TinkyWiki MCP
+    </div>
+    <span class="version">v1.3.0</span>
+  </div>
+  <nav>
+    <div class="nav-section">Overview</div>
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="release-notes.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+      Release Notes
+    </a>
+    <div class="nav-section">Getting Started</div>
+    <a href="installation.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Installation
+    </a>
+    <a href="setup.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Editor Setup
+    </a>
+    <div class="nav-section">Reference</div>
+    <a href="tools.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Tools
+    </a>
+    <a href="configuration.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Configuration
+    </a>
+    <a href="architecture.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      Architecture
+    </a>
+    <div class="nav-section">Guides</div>
+    <a href="agents.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5C7.33 7.83 4 10.6 4 13a8 8 0 0 0 16 0c0-2.4-3.33-5.17-5-6.5"/></svg>
+      Agentic AI Guide
+    </a>
+    <a href="skills.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Skills &amp; Client Setup
+    </a>
+    <a href="testing-guide.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Agent Testing Guide
+    </a>
+    <a href="demo.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Cloudmeru/TinkyWiki-MCP" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://pypi.org/project/tinkywiki-mcp/" target="_blank">PyPI</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="content">
+    <h1 class="page-title">Architecture</h1>
+    <p class="page-subtitle">How TinkyWiki MCP works under the hood — Playwright-everywhere design.</p>
+
+    <h2>Architecture Diagram</h2>
+    <div class="diagram">
+      <div class="mermaid">
+        graph LR
+          A[Editor Client] -->|requests| B[Tools Layer]
+          B -->|bare keyword?| R[Keyword Resolver]
+          R -->|owner/repo| B
+          B -->|rate limit + dedup| H[Safety Layer]
+          H -->|renders via| C[Browser Singleton]
+          C --> D[Playwright Chromium]
+          C --> I[Session Pool]
+          I -->|stealth context| D
+          D --> E[Parser]
+          E --> B
+          C --> F[TTL Cache]
+          B --> G[JSON Response]
+      </div>
+    </div>
+
+    <h2>Why Playwright?</h2>
+    <p>Google TinkyWiki is an <strong>Angular SPA</strong> (<code>&lt;sdlc-agents-root&gt;</code>) — a plain HTTP GET returns an empty body. All page content is rendered client-side, so every tool uses <strong>Playwright headless Chromium</strong> to get actual content.</p>
+
+    <h2>Browser Singleton</h2>
+    <p>A <strong>persistent background event loop</strong> runs in a daemon thread. <code>browser.py</code> provides:</p>
+    <ul>
+      <li><code>_get_browser()</code> — lazily launches a shared Chromium instance</li>
+      <li><code>run_in_browser_loop(coro)</code> — submits async work to the persistent loop from any sync context</li>
+      <li><code>fetch_rendered_html(url)</code> — navigates, waits for SPA content markers, returns the rendered HTML</li>
+    </ul>
+    <p>All 5 tools share the same browser instance. Pages are cached in a TTLCache (5 min by default) so repeated requests skip the render entirely.</p>
+
+    <h2>SPA-Aware Parser</h2>
+    <p>TinkyWiki uses custom Angular elements instead of standard HTML:</p>
+    <ul>
+      <li><code>&lt;body-content-section&gt;</code> — one per wiki section</li>
+      <li><code>&lt;documentation-markdown&gt;</code> — rendered markdown inside each section</li>
+      <li><code>&lt;chat&gt;</code> → <code>&lt;new-message-form&gt;</code> → <code>&lt;textarea data-test-id="chat-input"&gt;</code> — the Gemini chat</li>
+    </ul>
+    <p><code>parser.py</code> implements a <strong>dual-strategy section extractor</strong>:</p>
+    <ol>
+      <li><strong>TinkyWiki SPA</strong> — looks for <code>&lt;body-content-section&gt;</code> + <code>&lt;documentation-markdown&gt;</code> elements</li>
+      <li><strong>Standard HTML fallback</strong> — scans h1-h6 headings for non-TinkyWiki pages</li>
+    </ol>
+
+    <h2>Structured Diagram Extraction</h2>
+    <p>TinkyWiki renders diagrams as <code>&lt;code-documentation-diagram-inline&gt;</code> elements containing base64-encoded SVGs. The parser detects three types:</p>
+
+    <div class="tool-card">
+      <h3>1. TinkyWiki SPA Diagrams</h3>
+      <p>Decodes <code>data:image/svg+xml;base64,...</code> from <code>&lt;image class="image-diagram"&gt;</code> elements, then parses the Graphviz SVG structure into nodes and edges.</p>
+    </div>
+
+    <div class="tool-card">
+      <h3>2. Mermaid Blocks</h3>
+      <p>Captures raw Mermaid source from <code>&lt;code class="mermaid"&gt;</code> and <code>&lt;div class="mermaid"&gt;</code> elements.</p>
+    </div>
+
+    <div class="tool-card">
+      <h3>3. Fallback SVGs/Images</h3>
+      <p>Bare <code>&lt;svg&gt;</code> with <code>&lt;title&gt;</code> or <code>&lt;img&gt;</code> matching diagram patterns.</p>
+    </div>
+
+    <h3>Graphviz SVG Parsing</h3>
+    <p>For Graphviz SVGs, the parser extracts structured graph data:</p>
+    <ul>
+      <li><strong>Nodes</strong> — <code>&lt;g class="node"&gt;</code> groups → <code>{id, label}</code></li>
+      <li><strong>Edges</strong> — <code>&lt;g class="edge"&gt;</code> groups → <code>{from, to, label}</code></li>
+    </ul>
+    <p>Diagram summaries (entities + relationships) are placed at the top of tool output so they remain visible even when responses are truncated.</p>
+
+    <h2>Session Pool <small>(v1.0.2+)</small></h2>
+    <p><code>session_pool.py</code> maintains an LRU pool of <strong>warm browser contexts</strong> for the <code>tinkywiki_search_wiki</code> tool. Instead of creating a fresh Playwright context for every chat query, the pool keeps recently-used contexts alive with their pages already loaded.</p>
+    <ul>
+      <li><code>_get_or_create(url)</code> — returns a warm session or creates a new one; navigates to the page and opens the chat panel</li>
+      <li><code>_release(url, broken)</code> — returns a session to the pool (or destroys it if marked broken)</li>
+      <li>Pool size is configurable via <code>TINKYWIKI_SESSION_POOL_SIZE</code> (default: 10)</li>
+    </ul>
+    <p><strong>Important:</strong> The async <code>_get_or_create</code> / <code>_release</code> functions must be called directly from coroutines running on the browser event loop. The sync wrappers (<code>get_or_create_session</code> / <code>release_session</code>) are provided for non-loop callers only — calling them <em>from</em> the loop causes a deadlock.</p>
+
+    <h2>Browser Stealth Layer <small>(v1.0.4)</small></h2>
+    <p><code>stealth.py</code> injects anti-bot-detection patches into every Playwright context:</p>
+    <ul>
+      <li><strong>JS property overrides</strong> — patches <code>navigator.webdriver</code>, <code>chrome.runtime</code>, plugins array, languages, WebGL vendor/renderer, permissions query, and <code>outerWidth</code>/<code>outerHeight</code></li>
+      <li><strong>Human-like input</strong> — <code>human_type()</code> types character-by-character with 35–120 ms jitter and thinking pauses; <code>human_click()</code> moves the mouse to the element before clicking</li>
+      <li><strong>Stealth context options</strong> — viewport jitter, locale, timezone, Sec-CH-UA client hints, device scale factor</li>
+      <li><strong>Launch args</strong> — <code>--disable-blink-features=AutomationControlled</code>, <code>--disable-infobars</code></li>
+    </ul>
+
+    <h2>Anti-Loop Safety <small>(v1.0.3)</small></h2>
+    <p>When an AI agent calls tools in a loop, these mechanisms prevent runaway behaviour:</p>
+    <ul>
+      <li><strong>In-flight deduplication</strong> (<code>dedup.py</code>) — concurrent identical tool calls are collapsed into a single execution</li>
+      <li><strong>Rate limiting</strong> (<code>rate_limit.py</code>) — sliding-window limiter (default: 10 calls per 60 s per repo) returns a clear <code>RATE_LIMITED</code> error</li>
+      <li><strong>Content hash + idempotency key</strong> — every response carries a SHA-256 <code>content_hash</code> and <code>idempotency_key</code> so agents can detect duplicate results</li>
+    </ul>
+
+    <h2>Keyword Resolver <small>(v1.2.0+)</small></h2>
+    <p><code>resolver.py</code> enables <strong>bare keyword input</strong> — users can type just <code>"react"</code> instead of <code>facebook/react</code>. The resolution pipeline:</p>
+    <ol>
+      <li><strong>TinkyWiki search scraping</strong> — headless Playwright fetches search results from <code>codewiki.google</code></li>
+      <li><strong>GitHub API fallback</strong> <small>(v1.3.0)</small> — when TinkyWiki returns zero hits, queries <code>api.github.com/search/repositories</code> to handle typos and lesser-known repos</li>
+      <li><strong>MCP Elicitation</strong> — if multiple repos match and a <code>ctx: Context</code> parameter is present, the server uses the <a href="https://modelcontextprotocol.io/specification/2025-06-18/server/elicitation">MCP Elicitation</a> protocol to ask the user to pick</li>
+      <li><strong>Heuristic top-pick</strong> — when elicitation is unavailable, the highest-starred result is selected automatically</li>
+    </ol>
+    <p>Resolution results are cached and a resolution note is prepended to every tool response.</p>
+
+    <h2>Key Components</h2>
+    <table>
+      <thead><tr><th>Component</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Playwright + shared browser</strong></td><td>All page rendering via headless Chromium</td></tr>
+        <tr><td><strong>Session pool</strong></td><td>LRU pool of warm browser contexts for search</td></tr>
+        <tr><td><strong>Stealth layer</strong></td><td>Anti-bot-detection patches &amp; human-like input helpers</td></tr>
+        <tr><td><strong>TTLCache (multi-layer)</strong></td><td>Rendered pages (5 min), search results (2 min), parsed objects, topic lists (30 min)</td></tr>
+        <tr><td><strong>Rate limiter + dedup</strong></td><td>Per-repo sliding window &amp; in-flight call deduplication</td></tr>
+        <tr><td><strong>BeautifulSoup + lxml</strong></td><td>Fast HTML parsing with section extraction, TOC, and diagram detection</td></tr>
+        <tr><td><strong>Pydantic schemas</strong></td><td>Validate all inputs before processing</td></tr>
+        <tr><td><strong>Keyword resolver</strong></td><td>Bare keyword → owner/repo via TinkyWiki search, GitHub API fallback, MCP Elicitation</td></tr>
+        <tr><td><strong>Structured responses</strong></td><td>JSON envelope with metadata, SHA-256 content hash, idempotency key</td></tr>
+        <tr><td><strong>Modular tools</strong></td><td>Each tool in its own module, registered via <code>register_all_tools()</code></td></tr>
+        <tr><td><strong>Signal handlers</strong></td><td>SIGINT/SIGTERM for clean shutdown with browser cleanup</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Project Structure</h2>
+    <pre><code>tinkywiki_mcp/
+├── __init__.py        # Package init + version
+├── __main__.py        # python -m entry point
+├── browser.py         # Shared Playwright browser singleton + persistent event loop
+├── cache.py           # TTLCache for rendered pages, search results, parsed objects, topics
+├── config.py          # Env-var-driven configuration + SPA selectors
+├── dedup.py           # In-flight call deduplication
+├── parser.py          # Playwright renderer + BeautifulSoup section parser
+├── rate_limit.py      # Per-repo sliding-window rate limiter
+├── resolver.py        # Bare keyword → owner/repo resolution (TinkyWiki + GitHub API + Elicitation)
+├── server.py          # MCP server setup + CLI
+├── session_pool.py    # LRU pool of warm browser contexts for search
+├── stealth.py         # Anti-bot-detection JS patches + human-like input helpers
+├── types.py           # Pydantic schemas + response models
+└── tools/
+    ├── __init__.py    # Tool registration
+    ├── _helpers.py    # Shared URL construction + error handling
+    ├── contents.py    # tinkywiki_read_contents (paginated)
+    ├── request_indexing.py # tinkywiki_request_indexing (Playwright form submission)
+    ├── search.py      # tinkywiki_search_wiki (Playwright chat interaction)
+    ├── structure.py   # tinkywiki_read_structure
+    └── topics.py      # tinkywiki_list_topics (with previews)
+tests/
+├── conftest.py            # Shared fixtures + sample data
+├── test_cache.py          # Cache layer tests
+├── test_config.py         # Configuration tests
+├── test_helpers.py        # Helper functions (URL building, truncation, pre-resolve)
+├── test_keyword_integration.py  # Tool-level keyword resolution integration
+├── test_parser.py         # Parser + HTML extraction tests
+├── test_request_indexing.py # Indexing tool elicitation + confirmation flow
+├── test_resolver.py       # Keyword resolver pipeline tests
+├── test_session_pool.py   # Session pool lifecycle + eviction tests
+├── test_stealth.py        # Stealth layer tests
+├── test_tools.py          # Server, tools &amp; integration tests
+├── test_types.py          # Schema, response, dedup, rate-limit, bare keyword &amp; SHA-256 tests
+└── diagnose_search.py     # Standalone headless chat diagnostic script
+Dockerfile             # Docker deployment</code></pre>
+
+    <h2>Running Tests</h2>
+    <pre><code>pip install -e ".[test]"
+pytest tests/ -v</code></pre>
+    <p>246 tests covering cache, config, parser, stealth, tools, types, dedup, rate limiting, idempotency, keyword resolution, helpers, request-indexing elicitation, and keyword integration.</p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

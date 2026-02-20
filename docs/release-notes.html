@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release Notes — TinkyWiki MCP</title>
+  <meta name="description" content="Release notes and changelog for TinkyWiki MCP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- Mobile burger -->
+<button class="burger" aria-label="Toggle navigation">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+</button>
+<div class="overlay"></div>
+
+<!-- Sidebar (same as index) -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      TinkyWiki MCP
+    </div>
+    <span class="version">v1.3.0</span>
+  </div>
+  <nav>
+    <div class="nav-section">Overview</div>
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="release-notes.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+      Release Notes
+    </a>
+    <div class="nav-section">Getting Started</div>
+    <a href="installation.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Installation
+    </a>
+    <a href="setup.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Editor Setup
+    </a>
+    <div class="nav-section">Reference</div>
+    <a href="tools.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Tools
+    </a>
+    <a href="configuration.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Configuration
+    </a>
+    <a href="architecture.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      Architecture
+    </a>
+    <div class="nav-section">Guides</div>
+    <a href="agents.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5C7.33 7.83 4 10.6 4 13a8 8 0 0 0 16 0c0-2.4-3.33-5.17-5-6.5"/></svg>
+      Agentic AI Guide
+    </a>
+    <a href="skills.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Skills &amp; Client Setup
+    </a>
+    <a href="testing-guide.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Agent Testing Guide
+    </a>
+    <a href="demo.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Cloudmeru/TinkyWiki-MCP" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://pypi.org/project/tinkywiki-mcp/" target="_blank">PyPI</a>
+  </div>
+</aside>
+
+<!-- Main -->
+<main class="main">
+  <div class="hero">
+    <h1>Release Notes</h1>
+    <p>Changelog and release notes for TinkyWiki MCP.</p>
+  </div>
+
+  <div class="content">
+    <h2>Latest Releases</h2>
+
+    <section class="release">
+      <h3>v1.3.0 — 2026-02-17</h3>
+      <ul>
+        <li><strong>GitHub API fallback for typos &amp; misspellings:</strong></li>
+        <ul>
+          <li>When TinkyWiki search returns zero results, the resolver now queries <code>api.github.com/search/repositories</code> as a fallback — catches typos like "fecbook/react" → "facebook/react".</li>
+          <li>Fully async with <code>httpx</code>; no API token required for public repos.</li>
+        </ul>
+        <li><strong>Indexing confirmation via MCP Elicitation:</strong></li>
+        <ul>
+          <li><code>tinkywiki_request_indexing</code> now asks the user to confirm before submitting a repository for indexing, using the MCP Elicitation protocol.</li>
+          <li>Users can accept, decline, or cancel — decline and cancel skip the submission gracefully.</li>
+        </ul>
+        <li><strong>Defensive hardening:</strong></li>
+        <ul>
+          <li>Narrowed all broad <code>except Exception</code> handlers across every module to catch only specific exception types (<code>TimeoutError</code>, <code>PlaywrightError</code>, <code>httpx.HTTPError</code>, etc.).</li>
+          <li>Eliminated bare <code>raise</code> from except-all blocks; replaced with targeted re-raises.</li>
+        </ul>
+        <li><strong>Code quality:</strong></li>
+        <ul>
+          <li>Full Ruff &amp; Pylint cleanup — zero warnings across the entire codebase.</li>
+          <li>Fixed session pool test infinite loop and <code>gc.collect</code> RuntimeWarnings.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>53 new tests covering keyword resolution, helpers, request-indexing elicitation, tool-level keyword integration, SHA-256 hashing, and bare keyword input validation.</li>
+          <li>New test files: <code>test_helpers.py</code> (27 tests), <code>test_request_indexing.py</code> (14 tests), <code>test_keyword_integration.py</code> (7 tests), plus additions to <code>test_types.py</code> (5 tests).</li>
+          <li>Total: <strong>246 tests passing</strong>, 0 warnings.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.2.0 — 2026-02-17</h3>
+      <ul>
+        <li><strong>Bare keyword resolution — <code>resolver.py</code>:</strong></li>
+        <ul>
+          <li>All tools now accept <strong>bare keywords</strong> (e.g. <code>"vue"</code>, <code>"react"</code>) in addition to full URLs and <code>owner/repo</code> shorthand.</li>
+          <li>Resolution pipeline: TinkyWiki search scraping → GitHub API fallback → MCP Elicitation for disambiguation → heuristic top-pick.</li>
+          <li>New module <code>tinkywiki_mcp/resolver.py</code> encapsulates the entire resolution flow.</li>
+        </ul>
+        <li><strong>MCP Elicitation protocol:</strong></li>
+        <ul>
+          <li>When multiple repositories match a keyword, the server uses the <a href="https://modelcontextprotocol.io/specification/2025-06-18/server/elicitation">MCP Elicitation</a> protocol to interactively ask the user to pick the right one.</li>
+          <li>Requires an MCP client that supports elicitation (e.g. Claude Desktop, VS Code Copilot with MCP support).</li>
+        </ul>
+        <li><strong>Resolution notes in responses:</strong></li>
+        <ul>
+          <li>When a bare keyword is resolved, every response is prefixed with a note like: <code>&gt; <strong>Resolved:</strong> keyword "vue" → <strong>vuejs/vue</strong> (209.9k★)</code></li>
+        </ul>
+        <li><strong><code>ctx</code> parameter on all tools:</strong></li>
+        <ul>
+          <li>All 5 tools now accept an optional <code>ctx: Context</code> parameter for MCP Elicitation support. Backward-compatible — omitting <code>ctx</code> disables elicitation and uses heuristic resolution.</li>
+        </ul>
+        <li><strong>SHA-256 content hash:</strong></li>
+        <ul>
+          <li>Content hash algorithm upgraded from MD5 to SHA-256 (16-char hex prefix) for stronger deduplication fingerprints.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>New <code>test_resolver.py</code> with full coverage of the resolution pipeline. Total: 193 tests passing.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.1.0 — 2026-02-16</h3>
+      <ul>
+        <li><strong>New tool — <code>tinkywiki_request_indexing</code>:</strong></li>
+        <ul>
+          <li>Submit unindexed repositories to Google TinkyWiki for indexing directly from the MCP server.</li>
+          <li>Full Playwright automation — navigates to the TinkyWiki search page, clicks "Request repository", fills the URL dialog, and submits.</li>
+          <li>Automatic <code>NOT_INDEXED</code> detection — all tools now detect unindexed repos and return a structured <code>NOT_INDEXED</code> error code with guidance to call <code>tinkywiki_request_indexing</code>.</li>
+        </ul>
+        <li><strong>Tool renaming — <code>tinkywiki_verb_noun</code> pattern:</strong></li>
+        <ul>
+          <li>All tools renamed for better LLM/agent distinguishability: <code>tinkywiki_list_topics</code>, <code>tinkywiki_read_structure</code>, <code>tinkywiki_read_contents</code>, <code>tinkywiki_search_wiki</code>, <code>tinkywiki_request_indexing</code>.</li>
+          <li>Updated all agent instructions, skill definitions, README, and documentation.</li>
+        </ul>
+        <li><strong>Version management:</strong></li>
+        <ul>
+          <li><code>__init__.py</code> now reads version from <code>importlib.metadata</code> at runtime — no more hardcoded duplicate.</li>
+          <li>New <code>scripts/bump_version.py</code> — single command bumps <code>pyproject.toml</code>, all docs version badges, and the server banner year.</li>
+        </ul>
+        <li><strong>ASCII startup banner:</strong></li>
+        <ul>
+          <li>Server now prints a branded ASCII banner with version and year to stderr on startup.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>10 new tests for NOT_INDEXED detection and request indexing tool. Total: 161 tests passing.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.0.4 — 2026-02-16</h3>
+      <ul>
+        <li><strong>Critical bug fixes:</strong></li>
+        <ul>
+          <li><strong>Event-loop deadlock</strong> — <code>_search_impl</code> runs on the browser event loop; calling the sync <code>get_or_create_session()</code> wrapper tried to submit a coroutine to the <em>same</em> loop and blocked, causing a 60 s deadlock per attempt (~123 s total). Fixed by using <code>await _get_or_create()</code> / <code>await _release()</code> directly.</li>
+          <li><strong>Double-submit timeout</strong> — after pressing Enter the send button becomes disabled; the old <code>_click_submit()</code> then waited 30 s trying to click the disabled button. New <code>_submit_query()</code> checks the button state first and only clicks as a fallback.</li>
+        </ul>
+        <li><strong>Browser stealth layer:</strong></li>
+        <ul>
+          <li>New <code>stealth.py</code> module — patches <code>navigator.webdriver</code>, <code>chrome.runtime</code>, plugins, languages, WebGL vendor, permissions, and window dimensions.</li>
+          <li>Human-like input helpers: <code>human_type()</code> (per-character jitter 35–120 ms), <code>human_click()</code> (mouse-move + click), <code>random_delay()</code>.</li>
+          <li>Stealth context options: viewport jitter, locale, timezone, Sec-CH-UA client hints, device scale factor.</li>
+          <li>Launch args: <code>--disable-blink-features=AutomationControlled</code>, <code>--disable-infobars</code>.</li>
+          <li>User-Agent updated to Chrome/132.</li>
+        </ul>
+        <li><strong>Testing &amp; diagnostics:</strong></li>
+        <ul>
+          <li>22 new stealth tests; 151 total tests passing.</li>
+          <li>Added <code>tests/diagnose_search.py</code> — standalone diagnostic script for headless chat debugging.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.0.3 — 2026-02-16</h3>
+      <ul>
+        <li><strong>Anti-loop / agent-safety optimizations:</strong></li>
+        <ul>
+          <li><strong>In-flight deduplication</strong> — concurrent identical tool calls are collapsed into one, preventing duplicate work.</li>
+          <li><strong>Rate limiting</strong> — max 10 calls per 60 s per repository URL; returns a clear <code>RATE_LIMITED</code> error when exceeded.</li>
+          <li><strong>Content hash</strong> — every response includes a short hash so agents can detect duplicate content without re-reading.</li>
+          <li><strong>Topic cache</strong> — <code>tinkywiki_list_topics</code> results are cached for 5 min with a <code>size_hint</code> field to guide agents.</li>
+          <li><strong>Idempotency key</strong> — <code>repo_url::content_hash</code> key in every response for agent-level dedup.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>28 new tests for dedup, rate limiting, content hash, topic cache, and idempotency. Total: 129 tests passing.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.0.2 — 2026-02-16</h3>
+      <ul>
+        <li><strong>Token efficiency optimizations:</strong></li>
+        <ul>
+          <li><code>tinkywiki_list_topics</code> now returns titles + 200-char previews instead of dumping the full page (~80% fewer tokens).</li>
+          <li><code>tinkywiki_read_contents</code> supports pagination via <code>offset</code> and <code>limit</code> parameters — read only what you need.</li>
+          <li>Search responses are cached for 2 minutes — repeated identical queries return instantly.</li>
+          <li>Parsed <code>WikiPage</code> objects are cached in memory — avoids re-parsing the same HTML on repeated tool calls.</li>
+          <li>Word-boundary-aware truncation prevents mid-word content cuts.</li>
+        </ul>
+        <li><strong>Code quality improvements:</strong></li>
+        <ul>
+          <li>New shared <code>tools/_helpers.py</code> module eliminates duplicated error handling and URL construction across all tools.</li>
+          <li>Added <code>ContentsInput</code> Pydantic model with pagination parameters.</li>
+          <li>Updated tool descriptions to guide agents toward the most efficient workflow.</li>
+        </ul>
+        <li><strong>Documentation:</strong></li>
+        <ul>
+          <li>Updated <a href="agents.html">Agentic AI Guide</a> with token-efficient workflow recommendations.</li>
+          <li>Added model selection &amp; GitHub Copilot credit optimization guide.</li>
+          <li>Updated <a href="tools.html">Tools Reference</a> with new pagination parameters and caching behavior.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>Added tests for parsed cache, search cache, and pagination. Total: 101 tests passing.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.0.1 — 2026-02-15</h3>
+      <ul>
+        <li>Documentation updates and site polish:</li>
+        <ul>
+          <li>Added <a href="agents.html">Agentic AI Guide</a> and `Skills &amp; Client Setup` guide.</li>
+          <li>Added GitHub Copilot CLI installation and MCP integration section.</li>
+          <li>Added favicon (SVG + PNG + ICO) and updated docs head metadata.</li>
+          <li>Fixed Mermaid diagram syntax in <a href="architecture.html">architecture</a> and <a href="tools.html">tools</a> pages.</li>
+          <li>Published site to GitHub Pages and updated README link.</li>
+        </ul>
+        <li>Minor repo cleanup and formatting:</li>
+        <ul>
+          <li>Removed unused `server.py` and applied code style fixes (Black, Ruff, Pylint).</li>
+          <li>Small UI tweak: removed duplicate hero SVG (logo remains in sidebar).</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v1.0.0 — 2026-02-14</h3>
+      <ul>
+        <li>Stable release with core features:</li>
+        <ul>
+          <li>Playwright-based headless rendering for Google TinkyWiki pages.</li>
+          <li>Diagram extraction (Mermaid, Graphviz, inline SVG parsing).</li>
+          <li>Four MCP tools: topics overview, structure JSON TOC, full/section content, interactive chat Q&amp;A.</li>
+        </ul>
+        <li>Release infra:</li>
+        <ul>
+          <li>PyPI packaging and a GitHub Actions workflow for trusted publishing.</li>
+          <li>Dockerfile updated to install from PyPI and include Playwright dependencies.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="release">
+      <h3>v0.3.0 — initial</h3>
+      <ul>
+        <li>Initial development baseline and repository import.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
