@@ -1,5 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#6c63ff"/>
-  <text x="50%" y="54%" font-family="Inter, Arial, sans-serif" font-size="34" fill="#ffffff" font-weight="700" text-anchor="middle">CW</text>
+<svg width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  
+  <path d="M40 10 L50 3 L60 10" 
+        fill="none" 
+        stroke="#6A0DAD" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+
+  <rect x="12" y="18" 
+        width="76" 
+        height="72" 
+        rx="16" 
+        fill="none" 
+        stroke="#6A0DAD" 
+        stroke-width="6"/>
+
+  <g text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    
+    <text x="50"
+          y="56"
+          font-size="34"
+          font-weight="800"
+          fill="#6A0DAD"
+          letter-spacing="-1">
+      TW
+    </text>
+
+    <text x="50"
+          y="76"
+          font-size="20"
+          font-weight="700"
+          fill="#303030"
+          letter-spacing="0">
+      MCP
+    </text>
+
+  </g>
 </svg>

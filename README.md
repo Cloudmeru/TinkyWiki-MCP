@@ -16,6 +16,34 @@ An [MCP](https://modelcontextprotocol.io/) server that brings [Google TinkyWiki]
 
 ---
 
+## Architecture — 3-Tier Fallback
+
+TinkyWiki MCP uses a transparent **3-tier fallback** to maximize coverage across repositories:
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                   TinkyWiki MCP Server                       │
+│                                                              │
+│  ┌────────────────┐   ┌────────────┐   ┌─────────────────┐  │
+│  │  1. TinkyWiki   │──▶│ 2. DeepWiki │──▶│  3. GitHub API  │  │
+│  │  (Google        │   │             │   │  (REST, last    │  │
+│  │   CodeWiki)     │   │  Broader    │   │   resort)       │  │
+│  │  Primary source │   │  coverage   │   │  README + meta  │  │
+│  └────────────────┘   └────────────┘   └─────────────────┘  │
+│                                                              │
+│  If a source doesn't have the repo → try the next layer     │
+│  Every response includes a source provenance banner          │
+└──────────────────────────────────────────────────────────────┘
+```
+
+| Layer | Source | What it provides | When it's used |
+|-------|--------|-----------------|----------------|
+| **1** | **TinkyWiki** (Google CodeWiki) | Gemini AI-generated docs, topics, structure, Q&A chat | Primary — tried first for every request |
+| **2** | **DeepWiki** | Community wiki pages, topic sidebar, Ask chat | When TinkyWiki hasn't indexed the repo |
+| **3** | **GitHub API** | README, file tree, repo metadata, code search | Last resort — when neither wiki has content |
+
+The fallback is **fully transparent** — callers use the same 5 tools regardless of which source answers. A `source` banner in each response tells you where the data came from. Disable any layer via environment variables (`DEEPWIKI_ENABLED`, `GITHUB_API_ENABLED`, `TINKYWIKI_FALLBACK_ENABLED`).
+
 ## Sample Conversation
 
 <p align="center">

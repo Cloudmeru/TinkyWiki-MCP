@@ -27,7 +27,7 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
       TinkyWiki MCP
     </div>
-    <span class="version">v1.3.0</span>
+    <span class="version">v1.4.0</span>
   </div>
   <nav>
     <div class="nav-section">Overview</div>
@@ -98,6 +98,47 @@
 
   <div class="content">
     <h2>Latest Releases</h2>
+
+    <section class="release">
+      <h3>v1.4.0 — 2026-02-20</h3>
+      <ul>
+        <li><strong>3-tier fallback architecture:</strong></li>
+        <ul>
+          <li>TinkyWiki MCP now transparently chains three data sources: <strong>TinkyWiki (Google CodeWiki)</strong> → <strong>DeepWiki</strong> → <strong>GitHub API</strong>. If one source is unavailable or has not indexed the repository, the next layer is tried automatically.</li>
+          <li>New <code>fallback.py</code> orchestrator — coordinates the fallback chain for both page reads and search queries. Returns a <code>FallbackResult</code> / <code>SearchFallbackResult</code> with provenance metadata.</li>
+          <li>Every response now includes a <strong>source provenance banner</strong> (e.g. <code>Source: deepwiki</code>) so users and agents always know where data came from.</li>
+        </ul>
+        <li><strong>DeepWiki integration — <code>deepwiki.py</code>:</strong></li>
+        <ul>
+          <li>Full read support: topic listing from sidebar, page content fetching, section-level fetching — all via Playwright + BeautifulSoup parsing.</li>
+          <li><strong>DeepWiki Ask</strong> — interactive Q&amp;A using DeepWiki's chat UI, similar to TinkyWiki's Gemini-powered search.</li>
+          <li>Automatic not-indexed detection for DeepWiki pages.</li>
+          <li><code>deepwiki_request_indexing()</code> — navigate DeepWiki to trigger indexing for missing repos.</li>
+        </ul>
+        <li><strong>GitHub API fallback — <code>github_api.py</code>:</strong></li>
+        <ul>
+          <li>Last-resort data source using the GitHub REST API (stdlib <code>urllib.request</code>, no extra dependencies).</li>
+          <li>Fetches: repository metadata, README content, file tree, code search results, and GitHub Wiki pages.</li>
+          <li><code>github_search_answer()</code> synthesizes a structured answer from README + metadata when wiki sources are unavailable.</li>
+          <li>Supports <code>GITHUB_TOKEN</code> env var for authenticated access (5 000 req/hr vs 60 req/hr public).</li>
+        </ul>
+        <li><strong>Auto-indexing:</strong></li>
+        <ul>
+          <li>When a repo is missing from TinkyWiki, the server now fires a background TinkyWiki indexing request automatically (fire-and-forget) while falling back to DeepWiki/GitHub API for the current request.</li>
+        </ul>
+        <li><strong>New configuration:</strong></li>
+        <ul>
+          <li><code>DEEPWIKI_ENABLED</code>, <code>DEEPWIKI_BASE_URL</code> — toggle and configure DeepWiki fallback.</li>
+          <li><code>GITHUB_API_ENABLED</code>, <code>GITHUB_API_BASE_URL</code>, <code>GITHUB_TOKEN</code>, <code>GITHUB_API_TIMEOUT</code> — toggle and configure GitHub API fallback.</li>
+          <li><code>TINKYWIKI_FALLBACK_ENABLED</code> — master switch for the entire fallback chain.</li>
+          <li>DeepWiki CSS selectors: <code>DEEPWIKI_CONTENT_SELECTORS</code>, <code>DEEPWIKI_NOT_INDEXED_INDICATORS</code>, <code>DEEPWIKI_ASK_INPUT_SELECTORS</code>, <code>DEEPWIKI_ASK_SUBMIT_SELECTORS</code>, <code>DEEPWIKI_UI_ARTIFACTS</code>.</li>
+        </ul>
+        <li><strong>Testing:</strong></li>
+        <ul>
+          <li>New test files: <code>test_deepwiki.py</code>, <code>test_github_api.py</code>, <code>test_fallback.py</code>, plus expanded <code>test_config.py</code>.</li>
+        </ul>
+      </ul>
+    </section>
 
     <section class="release">
       <h3>v1.3.0 — 2026-02-17</h3>
